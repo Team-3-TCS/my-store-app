@@ -76,7 +76,7 @@ h1{
   }
   .mat-column-descripcion { 
     white-space: unset !important;
-    flex: 0 0 30% !important;
+    flex: 0 0 35% !important;
     overflow-wrap: break-Word;
     Word-wrap: break-Word;
     Word-break: break-Word;
@@ -87,7 +87,7 @@ h1{
   }
   .mat-column-precio { 
     white-space: unset !important;
-    flex: 0 0 10% !important;
+    flex: 0 0 15% !important;
     overflow-wrap: break-Word;
     Word-wrap: break-Word;
   
@@ -123,7 +123,7 @@ h1{
   }
   .mat-column-eliminar { 
     white-space: unset !important;
-    flex: 0 0 7% !important;
+    flex: 0 0 6% !important;
     overflow-wrap: break-Word;
     Word-wrap: break-Word;
   

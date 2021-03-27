@@ -23,11 +23,11 @@ const datos: producto[] = [
   { id: 19, idCategoria: 11, nombre: 'PUMA', descripcion: 'ZAPATILLAS HOMRE PUMA ULTRA RIDE', precio: 263.20, stock: 15 }
 ]
 @Component({
-  selector: 'app-agent',
-  templateUrl: './agent.component.html',
-  styleUrls: ['./agent.component.css']
+  selector: 'app-products-agent',
+  templateUrl: './products-agent.component.html',
+  styleUrls: ['./products-agent.component.css']
 })
-export class AgentComponent implements OnInit {
+export class ProductsAgentComponent implements OnInit {
 
   constructor() { }
 
