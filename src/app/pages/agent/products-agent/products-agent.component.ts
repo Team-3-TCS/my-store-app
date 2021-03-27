@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { producto } from 'src/app/models/producto.models';
+import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
 //datos de prueba
 const datos: producto[] = [
   { id: 1, idCategoria: 1, nombre: 'LAPTOP OMEN 17', descripcion: '16GB 1T SSD', precio: 8499, stock: 51 },
@@ -29,10 +32,25 @@ const datos: producto[] = [
 })
 export class ProductsAgentComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog,public snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
   columnas: string[] = ['codigo', 'idCategoria', 'nombre', 'descripcion', 'precio', 'stock', 'modificar', 'eliminar'];
   dataSource = datos;
+
+
+  eliminar():void{
+   
+   const dialogRef = this.dialog.open(MensajeConfirmacionComponent, {
+    width: '350px',
+    data: {mensaje: 'Esta seguro que desea eliminar el Producto?'}
+  });
+  
+  dialogRef.afterClosed().subscribe(result => {
+    if(result=== 'aceptar'){
+    this.snackBar.open('El producto fue eliminado con exito!','',{duration : 3000}); 
+   }
+  });
+  }
 }
