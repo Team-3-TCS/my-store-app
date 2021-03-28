@@ -1,0 +1,52 @@
+<div >
+    <h1>Productos</h1>
+</div>
+<div style="margin-left: 163ch; " >
+    <button mat-raised-button color="primary">Agregar</button>
+</div>
+<div class="example-container mat-elevation-z8"  >
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="codigo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Código</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let articulo"> {{articulo.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="idCategoria">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let articulo"> {{articulo.idCategoria}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let articulo"> {{articulo.nombre}} </mat-cell>
+        </ng-container>
+        <ng-container class="description" matColumnDef="descripcion">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="precio">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Precio </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let articulo"> {{articulo.precio|number}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="stock">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Stock </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let articulo"> {{articulo.stock}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="modificar">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-button>
+                    <mat-icon routerLink="editar">edit</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="eliminar">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-button>
+                    <mat-icon  class="y-icon" routerLink="#">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
+    </mat-table>
+</div>
