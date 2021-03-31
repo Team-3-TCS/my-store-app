@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductosService } from 'src/app/services/productos.service';
 
 @Component({
   selector: 'app-clientes',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clientes.component.css']
 })
 export class ClientesComponent implements OnInit {
-  
-  constructor() { }
+   
+  constructor(public productosService:ProductosService) { }
 
   ngOnInit(): void {
+  }
+  obtenerProductos(){
+    return this.productosService.getProducts();
   }
 
 }

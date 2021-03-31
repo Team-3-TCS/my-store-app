@@ -12,11 +12,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/agent/agent.module').then((m) => m.AgentModule),
   },
+
   {
     path: '',
     loadChildren: () =>
       import('./pages/clientes/clientes.module').then((m) => m.ClientesModule),
   }
+
 ];
 
 @NgModule({
