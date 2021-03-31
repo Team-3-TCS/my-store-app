@@ -2,7 +2,8 @@
     flex: 1 1 auto;
   }
   mat-grid-tile {
-    background: lightblue;
+    /*background: lightblue;*/
+    background: white;
   }
   .example-card {
     max-width: 250px;
@@ -12,4 +13,13 @@
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
+  }
+  mat-card{
+    border-radius: 10px;
+    border: 1px solid;
+    border-color:gray;
+  }
+  .x{
+    text-align: center;
+    
   }
