@@ -12,6 +12,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/agent/agent.module').then((m) => m.AgentModule),
   },
+  
 ];
 
 @NgModule({
