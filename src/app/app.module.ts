@@ -8,11 +8,13 @@ import { MaterialModuleModule } from './material-module/material-module.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AgentModule } from './pages/agent/agent.module';
+import {ClientesModule  } from './pages/clientes/clientes.module';
 import { MensajeConfirmacionComponent } from './shared/mensaje-confirmacion/mensaje-confirmacion.component';
 
 @NgModule({
   declarations: [AppComponent, MensajeConfirmacionComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, MaterialModuleModule, AppRoutingModule,AgentModule],
+  imports: [BrowserModule, BrowserAnimationsModule, MaterialModuleModule, AppRoutingModule,AgentModule,
+    ClientesModule],
   providers: [],
   bootstrap: [AppComponent],
 })
