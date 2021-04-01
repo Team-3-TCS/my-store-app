@@ -48,6 +48,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import { MatTreeModule } from '@angular/material/tree';
     MatDialogModule,
     MatInputModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
 
   ],
   declarations: [],
