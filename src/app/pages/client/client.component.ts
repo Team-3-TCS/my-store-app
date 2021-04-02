@@ -4,22 +4,26 @@ import { CartService } from 'src/app/services/cart.service';
 import { ProductosService } from 'src/app/services/productos.service';
 import { map } from 'rxjs/operators';
 import { producto } from 'src/app/models/producto.models';
+
 @Component({
   selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css']
+  templateUrl: './client.component.html',
+  styleUrls: ['./client.component.css'],
 })
-export class ClientesComponent implements OnInit {
-   total$:Observable<number>
-   @Input() product: producto;
-  constructor(public productosService:ProductosService,
-    private cartService: CartService) { 
-      this.total$=this.cartService.cart$.pipe(map(products=>products.length));
-    }
-
-  ngOnInit(): void {
+export class ClientComponent implements OnInit {
+  total$: Observable<number>;
+  @Input() product: producto;
+  constructor(
+    public productosService: ProductosService,
+    private cartService: CartService
+  ) {
+    this.total$ = this.cartService.cart$.pipe(
+      map((products) => products.length)
+    );
   }
-  obtenerProductos(){
+
+  ngOnInit(): void {}
+  obtenerProductos() {
     return this.productosService.getProducts();
   }
   addCart() {
