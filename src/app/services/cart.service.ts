@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 
 import { producto } from '../models/producto.models';
 
+import {Subject } from 'rxjs'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,4 +18,5 @@ export class CartService {
     this.products=[...this.products,producto];
     this.cart.next(this.products);
   }
+  public cartSubject=new Subject<any>();
 }

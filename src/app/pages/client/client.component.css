@@ -4,11 +4,12 @@
 mat-grid-tile {
   /*background: lightblue;*/
   background: white;
+  text-align: center;
 }
 .example-card {
   max-width: 250px;
 }
-
+mart-card
 .example-header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
@@ -17,6 +18,9 @@ mat-card {
   border-radius: 10px;
   border: 1px solid;
   border-color: gray;
+}
+.carrito{
+  width: 40px;
 }
 .x {
   text-align: center;
