@@ -2,7 +2,7 @@
   <h1>Productos</h1>
 </div>
 <div style="margin-left: 163ch; ">
-    <a mat-raised-button (click)="agregar()" routerLink="/product/newProducts" color="warn" > Agregar </a> 
+    <a mat-raised-button (click)="agregar()" routerLink="/agent/newProducts" color="warn" > Agregar </a> 
 </div>
 <div class="example-container mat-elevation-z8"  >
     <mat-table [dataSource]="dataSource" matSort>
@@ -35,7 +35,7 @@
             <mat-cell *matCellDef="let articulo">
                 <button mat-button  >
                    <!-- <mat-icon (click)="editar(articulo.id)" class="y-icon" routerLink="/products/{{articulo.id}}">edit</mat-icon>-->
-                   <mat-icon (click)="editar(articulo.id)"class="y-icon" routerLink="/products/{{articulo.id}}" > editar </mat-icon>
+                   <mat-icon (click)="editar(articulo.id)"class="y-icon" routerLink="{{articulo.id}}" > editar </mat-icon>
                 </button>
             </mat-cell>
         </ng-container>
