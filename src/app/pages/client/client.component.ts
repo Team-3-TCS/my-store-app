@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartService } from 'src/app/services/cart.service';
-import { ProductosService } from 'src/app/services/productos.service';
 import { map } from 'rxjs/operators';
-import { producto } from 'src/app/models/producto.models';
+import { CartService } from 'src/app/core/services/cart.service';
+import { ProductosService } from 'src/app/core/services/productos.service';
+import { Producto } from 'src/app/core/models/producto.models';
 
 @Component({
   selector: 'app-clientes',
@@ -12,7 +12,7 @@ import { producto } from 'src/app/models/producto.models';
 })
 export class ClientComponent implements OnInit {
   total$: Observable<number>;
-  @Input() product: producto;
+  @Input() product: Producto;
   constructor(
     public productosService: ProductosService,
     private cartService: CartService

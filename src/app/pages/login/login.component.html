@@ -8,26 +8,22 @@
           <form action="">
             <mat-form-field>
               <input
+                type="email"
                 matInput
-                placeholder="Correo"
-                required
-                name="email"
-                ngModel
-                #email="ngModel"
+                [formControl]="emailFormControl"
+                placeholder="Email"
               />
-              <mat-error>Email es requerido</mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')"
+                >Email es requerido</mat-error
+              >
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
             <mat-form-field>
               <input
-                matInput
-                placeholder="Contraseña"
                 type="password"
-                required
-                minlength="6"
-                name="password"
-                ngModel
-                #password="ngModel"
+                matInput
+                placeholder="Constraseña"
+                [formControl]="passwordFormControl"
               />
               <mat-error> La constraseña es requerido </mat-error>
               <mat-error>
@@ -36,7 +32,12 @@
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
             <mat-checkbox>Recordar mis credenciales!</mat-checkbox>
-            <button mat-raised-button color="warn" class="login-button">
+            <button
+              mat-raised-button
+              color="warn"
+              class="login-button"
+              (click)="login()"
+            >
               Ingresar
             </button>
 
