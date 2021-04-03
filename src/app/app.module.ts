@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MaterialModuleModule } from './material-module/material-module.module';
 import { MensajeConfirmacionComponent } from './shared/mensaje-confirmacion/mensaje-confirmacion.component';
 
+
 @NgModule({
   declarations: [AppComponent, MensajeConfirmacionComponent],
 
