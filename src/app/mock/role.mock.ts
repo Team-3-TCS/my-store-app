@@ -12,7 +12,7 @@ export const roles: Rol[] = [
     nombre: 'CLIENT',
   },
   {
-    id_rol: 2,
+    id_rol: 3,
     descripcion: 'Vendedor',
     nombre: 'AGENT',
   },

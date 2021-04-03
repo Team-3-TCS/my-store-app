@@ -22,13 +22,13 @@ export const Persons: Persona[] = [
     genero: 2,
   },
   {
-    id_persona: 2,
-    usuario: 2,
+    id_persona: 3,
+    usuario: 3,
     nombre: 'Edgard',
     apellido_paterno: 'MacQuarrie',
     apellido_materno: 'Houten',
     correo: 'ehouten2@sun.com',
     celular: '749-145-1589',
-    genero: 3,
+    genero: 2,
   },
 ];
