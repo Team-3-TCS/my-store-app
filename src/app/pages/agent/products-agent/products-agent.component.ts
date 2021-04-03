@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { producto } from 'src/app/models/producto.models';
+import { Producto } from 'src/app/core/models/producto.models';
 import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
 import { ProductsService } from '../../../services/products.service';
 
@@ -16,7 +16,7 @@ import { ProductsService } from '../../../services/products.service';
 export class ProductsAgentComponent implements OnInit {
   static edit: boolean = false;
   static id: number = 0;
-  datos: producto[] = [];
+  datos: Producto[] = [];
   data;
   dataSource;
 
@@ -31,7 +31,7 @@ export class ProductsAgentComponent implements OnInit {
   ngOnInit(): void {
     this.datos = this.productsService.getProducts();
     this.data = Object.assign(this.datos);
-    this.dataSource = new MatTableDataSource<producto>(this.data);
+    this.dataSource = new MatTableDataSource<Producto>(this.data);
     this.dataSource = this.datos;
   }
   columnas: string[] = [
@@ -64,7 +64,7 @@ export class ProductsAgentComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'aceptar') {
         this.data.splice(id, 1);
-        this.dataSource = new MatTableDataSource<producto>(this.data);
+        this.dataSource = new MatTableDataSource<Producto>(this.data);
         this.snackBar.open('El producto fue eliminado con exito!', '', {
           duration: 3000,
         });
