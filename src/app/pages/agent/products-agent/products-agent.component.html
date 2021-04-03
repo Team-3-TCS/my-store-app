@@ -3,13 +3,13 @@
 </div>
 <!--<div style="margin-left: 163ch; " >-->
 <div style="margin-left: 163ch; ">
-    <a mat-raised-button routerLink="/newProducts" color="warn" > Agregar </a> 
+    <a mat-raised-button (click)="agregar()" routerLink="/product/newProducts" color="warn" > Agregar </a> 
 </div>
 <div class="example-container mat-elevation-z8"  >
     <mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="codigo">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Código</mat-header-cell>
-            <mat-cell mat-cell *matCellDef="let articulo"> {{articulo.id}} </mat-cell>
+            <mat-cell mat-cell *matCellDef="let articulo, let i=index"> {{articulo.id}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="idCategoria">
             <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </mat-header-cell>
@@ -33,17 +33,18 @@
         </ng-container>
         <ng-container matColumnDef="modificar">
             <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-                <button mat-button>
-                    <mat-icon (click)="editar()"routerLink="editar">edit</mat-icon>
+            <mat-cell *matCellDef="let articulo">
+                <button mat-button  >
+                   <!-- <mat-icon (click)="editar(articulo.id)" class="y-icon" routerLink="/products/{{articulo.id}}">edit</mat-icon>-->
+                   <mat-icon (click)="editar(articulo.id)"class="y-icon" routerLink="/products/{{articulo.id}}" > editar </mat-icon>
                 </button>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="eliminar">
             <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell *matCellDef="let articulo, let j=index">
                 <button mat-button>
-                    <mat-icon (click)="eliminar()" class="y-icon" routerLink="#">delete</mat-icon>
+                    <mat-icon (click)="eliminar(j)" class="y-icon" routerLink="#">delete</mat-icon>
                 </button>
             </mat-cell>
         </ng-container>
@@ -51,3 +52,4 @@
         <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
     </mat-table>
 </div>
+
