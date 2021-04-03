@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProductosService } from 'src/app/core/services/productos.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Producto } from 'src/app/core/models/producto.models';
 import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
+import { ProductsService } from '../../../services/products.service';
+
 //datos de prueba
 @Component({
   selector: 'app-products-agent',
@@ -10,13 +14,26 @@ import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacio
   styleUrls: ['./products-agent.component.css'],
 })
 export class ProductsAgentComponent implements OnInit {
+  static edit: boolean = false;
+  static id: number = 0;
+  datos: Producto[] = [];
+  data;
+  dataSource;
+
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    public productsService: ProductosService
+    private activatedRoute: ActivatedRoute,
+    private productsService: ProductsService,
+    private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.datos = this.productsService.getProducts();
+    this.data = Object.assign(this.datos);
+    this.dataSource = new MatTableDataSource<Producto>(this.data);
+    this.dataSource = this.datos;
+  }
   columnas: string[] = [
     'codigo',
     'idCategoria',
@@ -27,9 +44,18 @@ export class ProductsAgentComponent implements OnInit {
     'modificar',
     'eliminar',
   ];
-  dataSource = this.productsService.getProducts();
 
-  eliminar(): void {
+  agregar() {
+    ProductsAgentComponent.edit = false;
+  }
+
+  editar(id: number): void {
+    ProductsAgentComponent.edit = true;
+    ProductsAgentComponent.id = id;
+    console.log(id, ProductsAgentComponent.id);
+  }
+
+  eliminar(id: number): void {
     const dialogRef = this.dialog.open(MensajeConfirmacionComponent, {
       width: '350px',
       data: { mensaje: 'Esta seguro que desea eliminar el Producto?' },
@@ -37,6 +63,8 @@ export class ProductsAgentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'aceptar') {
+        this.data.splice(id, 1);
+        this.dataSource = new MatTableDataSource<Producto>(this.data);
         this.snackBar.open('El producto fue eliminado con exito!', '', {
           duration: 3000,
         });

@@ -20,8 +20,9 @@
         </span>
     </button> -->
     <button mat-icon-button>
-      <span [matBadge]="total$ | async" class="material-icons">
-        shopping_cart
+      <!--<span [matBadge]="total$ | async" class="material-icons">-->
+      <span  matBadge="{{valor}}"  matBadgeOverlap="false" class="material-icons">
+        <mat-icon routerLink="/clients/shoppingCart">shopping_cart</mat-icon>
       </span>
     </button>
 
@@ -42,13 +43,8 @@
   </mat-toolbar>
 </p>
 <mat-grid-list cols="3" rowHeight="3:3">
-  <mat-grid-tile *ngFor="let products of obtenerProductos()">
+  <mat-grid-tile *ngFor="let products of productos">
     <mat-card class="example-card">
-      <!--    <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>Shiba Inu</mat-card-title>
-              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header> -->
       <img
         mat-card-image
         src="{{ products.imagen }}"
@@ -65,13 +61,14 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary">Ver detalle</button>
-        <button (click)="addCart()" mat-raised-button color="primary">
+        <button  (click)="addCar(products)"   mat-raised-button color="primary">
           Agregar al carrito
         </button>
       </mat-card-actions>
-    </mat-card>
+    </mat-card>  
   </mat-grid-tile>
 </mat-grid-list>
+<router-outlet></router-outlet>
 <!--  <footer>
          <div class="x" >
           <mat-card-subtitle>

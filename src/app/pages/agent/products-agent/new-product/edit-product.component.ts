@@ -3,34 +3,46 @@ import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/core/models/producto.models';
 import { ProductsAgentComponent } from 'src/app/pages/agent/products-agent/products-agent.component';
 import { ProductsService } from 'src/app/services/products.service';
-
 interface Category {
   value: string;
   viewValue: string;
 }
 
 @Component({
-  selector: 'app-new-products',
+  selector: 'app-edit-produtc',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.css'],
 })
-export class NewProductComponent implements OnInit {
+export class EditProductComponent implements OnInit {
   product: Producto;
   edit = ProductsAgentComponent.edit;
-
+  id = ProductsAgentComponent.id;
   products: Producto[] = [];
+  selectedProduct: Producto = {
+    nombre: null,
+    descripcion: null,
+    precio: null,
+    stock: null,
+  };
 
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.product = this.productsService.getProduct(params['id']);
+      this.product = this.productsService.getProductEdit(params['id']);
     });
   }
 
   ngOnInit(): void {
     this.products = this.productsService.getProducts();
+    console.log(this.edit);
+    console.log(this.product);
+    this.selectedProduct.nombre = this.product.nombre;
+    this.selectedProduct.descripcion = this.product.descripcion;
+    this.selectedProduct.precio = this.product.precio;
+    this.selectedProduct.stock = this.product.stock;
+    console.log(this.selectedProduct);
   }
 
   categories: Category[] = [
@@ -38,13 +50,6 @@ export class NewProductComponent implements OnInit {
     { value: 'c-1', viewValue: 'Pants' },
     { value: 'c-2', viewValue: 'Shirt' },
   ];
-
-  selectedProduct: Producto = {
-    nombre: null,
-    descripcion: null,
-    precio: null,
-    stock: null,
-  };
 
   addOrEditProduct() {
     if (!this.edit) {
@@ -59,12 +64,7 @@ export class NewProductComponent implements OnInit {
       };
       ProductsAgentComponent.edit = false;
     } else {
-      this.selectedProduct = {
-        nombre: null,
-        descripcion: null,
-        precio: null,
-        stock: null,
-      };
+      this.productsService.editProduct(this.selectedProduct, this.id);
     }
   }
 }

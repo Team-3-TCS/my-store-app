@@ -1,9 +1,13 @@
 <div>
   <h1>Productos</h1>
 </div>
-<!--<div style="margin-left: 163ch; " >-->
 <div style="text-align: right; margin-right: 10%">
-  <a mat-raised-button routerLink="/agent/newProducts" color="warn">
+  <a
+    mat-raised-button
+    (click)="agregar()"
+    routerLink="/agent/newProducts"
+    color="warn"
+  >
     Agregar
   </a>
 </div>
@@ -13,7 +17,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Código</mat-header-cell
       >
-      <mat-cell mat-cell *matCellDef="let articulo">
+      <mat-cell mat-cell *matCellDef="let articulo; let i = index">
         {{ articulo.id }}
       </mat-cell>
     </ng-container>
@@ -61,9 +65,16 @@
       <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header>
         Editar
       </mat-header-cell>
-      <mat-cell *matCellDef="let row">
+      <mat-cell *matCellDef="let articulo">
         <button mat-button>
-          <mat-icon (click)="editar()" routerLink="editar">edit</mat-icon>
+          <!-- <mat-icon (click)="editar(articulo.id)" class="y-icon" routerLink="/products/{{articulo.id}}">edit</mat-icon>-->
+          <mat-icon
+            (click)="editar(articulo.id)"
+            class="y-icon"
+            routerLink="{{ articulo.id }}"
+          >
+            editar
+          </mat-icon>
         </button>
       </mat-cell>
     </ng-container>
@@ -71,9 +82,9 @@
       <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header>
         Eliminar
       </mat-header-cell>
-      <mat-cell *matCellDef="let row">
+      <mat-cell *matCellDef="let articulo; let j = index">
         <button mat-button>
-          <mat-icon (click)="eliminar()" class="y-icon" routerLink="#"
+          <mat-icon (click)="eliminar(j)" class="y-icon" routerLink="#"
             >delete</mat-icon
           >
         </button>
