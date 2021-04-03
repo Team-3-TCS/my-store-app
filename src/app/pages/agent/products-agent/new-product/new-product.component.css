@@ -1,42 +1,40 @@
 .container {
-    max-width: 80%;
-    margin:auto;
-    margin-top:30px;
-}    
-  
+  max-width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
 .example-full-width {
-    width: 60%;
+  width: 60%;
 }
 
-
-.example-card{
-    margin: auto;
-    width: 40%;
+.example-card {
+  margin: auto;
+  width: 40%;
 }
 
-.title-center{
-    margin-top: 20px;
-    /*margin-top: 20px;
+.title-center {
+  margin-top: 20px;
+  /*margin-top: 20px;
     margin-left:150px;*/
 }
 
-
 .example-form {
-    width: 100%;
+  width: 100%;
 }
 
-.centrado{
-    padding: auto;
+.centrado {
+  padding: auto;
 }
 
-.image-uploader{
-    margin:auto;
-    width: 60%;
-    border-width: 1.8px;
-    border-style: dotted;
-    border-color: #3483fa;
-    padding-top:18px;
-    padding-bottom: 18px;
-    margin-top:15px;
-    margin-bottom: 15px;
+.image-uploader {
+  margin: auto;
+  width: 60%;
+  border-width: 1.8px;
+  border-style: dotted;
+  border-color: #3483fa;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

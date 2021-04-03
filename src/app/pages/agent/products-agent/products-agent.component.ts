@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { producto } from 'src/app/models/producto.models';
+import { ProductosService } from 'src/app/services/productos.service';
 import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
@@ -25,7 +26,8 @@ export class ProductsAgentComponent implements OnInit {
   constructor(public dialog: MatDialog,public snackBar:MatSnackBar, private activatedRoute : ActivatedRoute,
               private productsService:ProductsService,
               private router:Router) { }
-  
+  dataSource = this.productsService.getProducts();
+ 
   ngOnInit(): void {
     this.datos = this.productsService.getProducts();
     this.data= Object.assign(this.datos);

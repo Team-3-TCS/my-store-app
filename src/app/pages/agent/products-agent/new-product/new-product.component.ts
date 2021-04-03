@@ -4,10 +4,10 @@ import { producto } from 'src/app/models/producto.models';
 import { ProductsAgentComponent } from 'src/app/pages/agent/products-agent/products-agent.component';
 import { ProductsService } from 'src/app/services/products.service';
 
-interface Category{
-    value: string;
-    viewValue: string;
-  }
+interface Category {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
     selector: 'app-new-products',

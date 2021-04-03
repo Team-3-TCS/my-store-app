@@ -10,20 +10,21 @@ const routes: Routes = [
   {
     path: '',
     component: AgentComponent,
-    children: [{
-      path: 'products',
-      component: ProductsAgentComponent
-    },
-    {
-      path: 'product/newProducts',
-      component: NewProductComponent
-    },
-    {
+    children: [
+      {
+        path: 'products',
+        component: ProductsAgentComponent,
+      },
+      {
+        path: 'newProducts',
+        component: NewProductComponent,
+      },
+      {
       path: 'products/:id',
       component: EditProductComponent
-    }
-    ]
-  }
+      }
+    ],
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
