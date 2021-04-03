@@ -9,9 +9,11 @@ import { AgentModule } from './pages/agent/agent.module';
 import { ClientesModule } from './pages/client/clientes.module';
 import { LoginModule } from './pages/login/login.module';
 import { MensajeConfirmacionComponent } from './shared/mensaje-confirmacion/mensaje-confirmacion.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, MensajeConfirmacionComponent],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

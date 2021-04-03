@@ -4,6 +4,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { producto } from 'src/app/models/producto.models';
 import { ProductosService } from 'src/app/services/productos.service';
 import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService } from '../../../services/products.service';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 //datos de prueba
 @Component({
   selector: 'app-products-agent',
@@ -11,16 +16,37 @@ import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacio
   styleUrls: ['./products-agent.component.css']
 })
 export class ProductsAgentComponent implements OnInit {
+  
+  static edit : boolean = false;
+  static id : number = 0;
+  datos: producto[] = [];
+  data;
+  dataSource;
 
-  constructor(public dialog: MatDialog,public snackBar:MatSnackBar,public productsService:ProductosService) { }
-
+  constructor(public dialog: MatDialog,public snackBar:MatSnackBar, private activatedRoute : ActivatedRoute,
+              private productsService:ProductsService,
+              private router:Router) { }
+  dataSource = this.productsService.getProducts();
+ 
   ngOnInit(): void {
+    this.datos = this.productsService.getProducts();
+    this.data= Object.assign(this.datos);
+    this.dataSource = new MatTableDataSource<producto>(this.data);
+    this.dataSource = this.datos;
   }
   columnas: string[] = ['codigo', 'idCategoria', 'nombre', 'descripcion', 'precio', 'stock', 'modificar', 'eliminar'];
-   dataSource = this.productsService.getProducts();
+  
+  agregar(){
+    ProductsAgentComponent.edit = false;
+  }
+  
+  editar(id:number):void{
+    ProductsAgentComponent.edit = true;
+    ProductsAgentComponent.id = id ;
+    console.log(id, ProductsAgentComponent.id);
+  }
 
-
-  eliminar():void{
+  eliminar(id:number):void{
    
    const dialogRef = this.dialog.open(MensajeConfirmacionComponent, {
     width: '350px',
@@ -29,8 +55,12 @@ export class ProductsAgentComponent implements OnInit {
   
   dialogRef.afterClosed().subscribe(result => {
     if(result=== 'aceptar'){
+    this.data.splice(id,1);
+    this.dataSource = new MatTableDataSource<producto>(this.data);
     this.snackBar.open('El producto fue eliminado con exito!','',{duration : 3000}); 
    }
   });
   }
 }
+
+    
