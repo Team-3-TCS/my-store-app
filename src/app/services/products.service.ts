@@ -14,6 +14,7 @@ export class ProductsService {
       descripcion: '16GB 1T SSD',
       precio: 8499,
       stock: 51,
+      cantidad:1
     },
     {
       id: 2,
@@ -22,6 +23,7 @@ export class ProductsService {
       descripcion: '55"',
       precio: 2599,
       stock: 30,
+      cantidad:1
     },
     {
       id: 3,
@@ -30,6 +32,7 @@ export class ProductsService {
       descripcion: 'Consola de PS4 Pro 1TB Negro',
       precio: 2299,
       stock: 11,
+      cantidad:1
     },
     {
       id: 4,
@@ -38,6 +41,7 @@ export class ProductsService {
       descripcion: 'REDMI 9 US 64G GRIS CARBON',
       precio: 559,
       stock: 4,
+      cantidad:1
     },
     {
       id: 5,
@@ -46,6 +50,7 @@ export class ProductsService {
       descripcion: 'Lavadora 18 Kg Blanca WWI18BBBLA',
       precio: 1699,
       stock: 70,
+      cantidad:1
     },
     {
       id: 6,
@@ -54,6 +59,7 @@ export class ProductsService {
       descripcion: 'Horno Midea empotrable a Gas',
       precio: 1799,
       stock: 50,
+      cantidad:1
     },
     {
       id: 7,
@@ -62,6 +68,7 @@ export class ProductsService {
       descripcion: 'tempo',
       precio: 999,
       stock: 2,
+      cantidad:1
     },
     {
       id: 8,
@@ -70,6 +77,7 @@ export class ProductsService {
       descripcion: 'Juego de Ollas 38 Pzs',
       precio: 349.9,
       stock: 31,
+      cantidad:1
     },
     {
       id: 9,
@@ -78,6 +86,7 @@ export class ProductsService {
       descripcion: 'Guess W1264g3',
       precio: 314.65,
       stock: 20,
+      cantidad:1
     },
     {
       id: 10,
@@ -86,6 +95,7 @@ export class ProductsService {
       descripcion: 'XIAOMI REDMI 9 US 64 GB GRIS CARBON',
       precio: 589,
       stock: 10,
+      cantidad:1
     },
     {
       id: 11,
@@ -94,6 +104,7 @@ export class ProductsService {
       descripcion: 'XIAOMI REDMI NOTE 8 64 GB BLACK',
       precio: 649,
       stock: 10,
+      cantidad:1
     },
     {
       id: 12,
@@ -102,6 +113,7 @@ export class ProductsService {
       descripcion: 'IPHONE SE 64GB BLACK',
       precio: 2099,
       stock: 10,
+      cantidad:1
     },
     {
       id: 13,
@@ -110,6 +122,7 @@ export class ProductsService {
       descripcion: 'GALAXY A71 BLACK',
       precio: 1599,
       stock: 20,
+      cantidad:1
     },
     {
       id: 14,
@@ -118,6 +131,7 @@ export class ProductsService {
       descripcion: 'P40 LITE NEGRO',
       precio: 999,
       stock: 15,
+      cantidad:1
     },
     {
       id: 15,
@@ -126,6 +140,7 @@ export class ProductsService {
       descripcion: 'ZAPATILLAS RUNNING MUEJR REBOOK ENERGYLUX ',
       precio: 135.92,
       stock: 10,
+      cantidad:1
     },
     {
       id: 16,
@@ -134,6 +149,7 @@ export class ProductsService {
       descripcion: 'ZAPATILLAS RUNNING HOMBRE ADIDAS RESPONSE SR',
       precio: 199.2,
       stock: 10,
+      cantidad:1
     },
     {
       id: 17,
@@ -142,6 +158,7 @@ export class ProductsService {
       descripcion: 'ZAPATILLAS NIKE METHOD TRAINER 2',
       precio: 258.3,
       stock: 20,
+      cantidad:1
     },
     {
       id: 18,
@@ -150,6 +167,7 @@ export class ProductsService {
       descripcion: 'ZAPATILLAS NIKE FLEX CONTACT 3',
       precio: 209,
       stock: 20,
+      cantidad:1
     },
     {
       id: 19,
@@ -158,8 +176,10 @@ export class ProductsService {
       descripcion: 'ZAPATILLAS HOMRE PUMA ULTRA RIDE',
       precio: 263.2,
       stock: 15,
+      cantidad:1
     },
   ];
+  
   constructor() {}
 
   getProducts() {
@@ -169,7 +189,6 @@ export class ProductsService {
   getProduct(i: string) {
     return this.products[i];
   }
-
   getProductEdit(i: number) {
     i = i - 1;
     return this.products[i];
@@ -178,7 +197,6 @@ export class ProductsService {
   addProduct(product: Producto) {
     this.products.push(product);
   }
-
   editProduct(product: Producto, i: number) {
     this.products[i - 1].nombre = product.nombre;
     this.products[i - 1].descripcion = product.descripcion;

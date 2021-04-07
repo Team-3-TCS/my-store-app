@@ -10,6 +10,7 @@ export const product: Producto[] = [
     stock: 51,
     imagen:
       'https://d598hd2wips7r.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/4/P/4PG18LA-2_T1578950179.png',
+    cantidad: 1,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const product: Producto[] = [
     stock: 30,
     imagen:
       'https://images.samsung.com/is/image/samsung/pe-uhdtv-nu7090-un50nu7090gxpe-frontblack-112114837?$720_576_PNG$',
+    cantidad: 1,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ export const product: Producto[] = [
     stock: 11,
     imagen:
       'https://upload.wikimedia.org/wikipedia/commons/3/39/PS2-Versions.png',
+    cantidad: 1,
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ export const product: Producto[] = [
     stock: 4,
     imagen:
       'https://compuusa.com.pe/7095-thickbox_default/celular-xiaomi-redmi-note-9-pro-128gb-lte.jpg',
+    cantidad: 1,
   },
   {
     id: 5,
@@ -49,6 +53,7 @@ export const product: Producto[] = [
     precio: 1699,
     stock: 70,
     imagen: 'https://www.lg.com/cl/images/lavadoras/md07521005/350.jpg',
+    cantidad: 1,
   },
   {
     id: 6,
@@ -59,6 +64,7 @@ export const product: Producto[] = [
     stock: 50,
     imagen:
       'https://www.sole.com.pe/1468/horno-empotrable-premium-012-electrico.jpg',
+    cantidad: 1,
   },
   {
     id: 7,
@@ -69,6 +75,7 @@ export const product: Producto[] = [
     stock: 2,
     imagen:
       'https://oechsle.vteximg.com.br/arquivos/ids/1140150-1000-1000/1496386_1.jpg?v=637492237275270000',
+    cantidad: 1,
   },
   {
     id: 8,
@@ -79,6 +86,7 @@ export const product: Producto[] = [
     stock: 31,
     imagen:
       'https://th.bing.com/th/id/OIP.zobuRrpAomUJxeHkJj2ggAHaHa?w=216&h=216&c=7&o=5&dpr=1.25&pid=1.7',
+    cantidad: 1,
   },
   {
     id: 9,
@@ -89,6 +97,7 @@ export const product: Producto[] = [
     stock: 20,
     imagen:
       'https://falabella.scene7.com/is/image/FalabellaPE/17457748_1?wid=800&hei=800&qlt=70',
+    cantidad: 1,
   },
   {
     id: 10,
@@ -98,6 +107,7 @@ export const product: Producto[] = [
     precio: 589,
     stock: 10,
     imagen: 'https://i.ibb.co/3TTsydq/RN8-negro.jpg',
+    cantidad: 1,
   },
   {
     id: 11,
@@ -107,6 +117,7 @@ export const product: Producto[] = [
     precio: 649,
     stock: 10,
     imagen: 'https://i.ibb.co/3TTsydq/RN8-negro.jpg',
+    cantidad: 1,
   },
   {
     id: 12,
@@ -117,6 +128,7 @@ export const product: Producto[] = [
     stock: 10,
     imagen:
       'https://media.revistagq.com/photos/5ed4bdebf95b900ced636e00/master/pass/iphone13.jpg',
+    cantidad: 1,
   },
   {
     id: 13,
@@ -127,6 +139,7 @@ export const product: Producto[] = [
     stock: 20,
     imagen:
       'https://s3.amazonaws.com/imagenes-sellers-mercado-ripley/2020/02/27135752/SAMSUNG-GALAXY-A51-NEGRO-1.jpg',
+    cantidad: 1,
   },
   {
     id: 14,
@@ -137,6 +150,7 @@ export const product: Producto[] = [
     stock: 15,
     imagen:
       'https://equiposlibres.pe/wp-content/uploads/2020/08/2f343b5d-428_428_cb3079355e7ac92c4c1960c2abf50d5f707e9595a5392bb9.jpg',
+    cantidad: 1,
   },
   {
     id: 15,
@@ -147,6 +161,7 @@ export const product: Producto[] = [
     stock: 10,
     imagen:
       'https://assets.reebok.com/images/w_600,f_auto,q_auto/7251e5c50af04221981ca991002ffe11_9366/Zapatillas_Reebok_Royal_Charm_Blanco_DV5410_01_standard.jpg',
+    cantidad: 1,
   },
   {
     id: 16,
@@ -157,6 +172,7 @@ export const product: Producto[] = [
     stock: 10,
     imagen:
       'https://runastore.pe/media/catalog/product/cache/1/image/1600x/040ec09b1e35df139433887a97daa66f/b/q/bq3999-002-001__1.jpg',
+    cantidad: 1,
   },
   {
     id: 17,
@@ -167,6 +183,7 @@ export const product: Producto[] = [
     stock: 20,
     imagen:
       'https://home.ripley.com.pe/Attachment/WOP_5/2084238089875/2084238089875-1.jpg',
+    cantidad: 1,
   },
   {
     id: 18,
@@ -177,6 +194,7 @@ export const product: Producto[] = [
     stock: 20,
     imagen:
       'http://home.ripley.com.pe/Attachment/WOP_5/2025204831395/2025204831395_2.jpg',
+    cantidad: 1,
   },
   {
     id: 19,
@@ -187,5 +205,6 @@ export const product: Producto[] = [
     stock: 15,
     imagen:
       'https://media.gq.com.mx/photos/5fbadd34e61591eae03e7c3b/master/pass/puma-tenis-nintendo.jpg',
+    cantidad: 1,
   },
 ];
