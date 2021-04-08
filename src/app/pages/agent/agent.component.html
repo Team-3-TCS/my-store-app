@@ -1,30 +1,10 @@
-<mat-sidenav-container class="example-container">
-  <!--<mat-sidenav #sidenav mode="push">-->
-  <mat-sidenav #drawer class="sidenav" fixedInViewport mode="push">
-    <mat-toolbar color="warn">Menú</mat-toolbar>
-    <mat-nav-list>
-      <!--<a mat-list-item routerLink="/agent"> Products </a> -->
-      <a mat-list-item routerLink="/agent/products">Productos</a>
-      <a mat-list-item routerLink="/">B</a>
-      <a mat-list-item routerLink="/">C</a>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <mat-toolbar color="warn">
-      <!--<button mat-mini-fab color="primary" (click)="sidenav.open()">-->
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-      >
-        <mat-icon> menu</mat-icon>
-      </button>
-      <p style="margin-left: 10px">MY STORE</p>
-    </mat-toolbar>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-footer></app-footer>
