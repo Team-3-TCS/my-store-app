@@ -1,0 +1,14 @@
+.disabled {
+    cursor: not-allowed;
+  }
+  .title{
+    font-weight: 700;
+  }
+  typography h3{
+    font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+  }
+  .section-title .title{
+    display: inline-block;
+    text-transform: uppercase;
+  }
