@@ -12,32 +12,19 @@ import { Producto } from 'src/app/core/models/producto.models';
 export class ClientComponent implements OnInit {
   total$: Observable<number>;
   productos: Producto[] = [];
-  aux: Producto[] = [];
   valor: number = 0;
   constructor(
     public productosService: ProductosService,
-    private cartService: CartService
+    public cartService: CartService
   ) {
-    this.total$ = this.cartService.cart$.pipe(
-      map((products) => products.length)
-    );
     this.cartService.cartSubject.subscribe((data) => {
-      this.valor = data;
-    });
+      this.valor=data;
+    })
+
   }
   ngOnInit(): void {
-    this.productos = this.productosService.getProducts();
-    var va = JSON.parse(localStorage.getItem('list'));
-    this.valor = va.length;
+    this.productos = this.obtenerProductos();
     this.getDatos();
-    this.controleCart();
-  }
-  controleCart() {
-    if (localStorage.getItem('list') != null) {
-      var cartCount = JSON.parse(localStorage.getItem('list'));
-      this.valor = cartCount.length;
-      this.cartService.cartSubject.next(this.valor);
-    }
   }
   obtenerProductos() {
     this.productosService.getProducts();
@@ -46,25 +33,31 @@ export class ClientComponent implements OnInit {
   getDatos() {
     if (localStorage.getItem('list') === null) {
       this.valor = 0;
+      let arrayList = JSON.parse(localStorage.getItem('list'));
+      this.valor = arrayList.length;
     } else {
-      this.aux = JSON.parse(localStorage.getItem('list'));
-      this.valor = this.aux.length;
+      let arrayList = JSON.parse(localStorage.getItem('list'));
+      this.valor = arrayList.length;
+    //  this.cartService.addcart.next(products,this.valor);
+    this.cartNumberFunc()
     }
   }
-  itemsCart: any = [];
-  addCar(task) {
+  addCar(products,valor){
+    this.cartService.addcart(products,valor);
+  }
+ /* addCar(products:Producto) {
     let count = 0;
     if (localStorage.getItem('list')) {
       let arrayList = JSON.parse(localStorage.getItem('list'));
       for (let i in arrayList) {
-        if (task.id === arrayList[i].id) {    
-          arrayList[i].cantidad+=1;
+        if (products.id === arrayList[i].id) {
+          arrayList[i].cantidad += 1;
         } else {
-          count += 1;     
+          count += 1;
         }
       }
       if (count === arrayList.length) {
-        arrayList.push(task); 
+        arrayList.push(products);
       } else {
         this.valor = count;
         this.valor -= 0;
@@ -73,18 +66,17 @@ export class ClientComponent implements OnInit {
       this.valor = arrayList.length;
     } else {
       let arrayList = [];
-      arrayList.push(task);
+      arrayList.push(products);
       this.valor = arrayList.length;
       localStorage.setItem('list', JSON.stringify(arrayList));
     }
-  }
-  agregar(products){
-    for(let i=0; i<this.productos.length; i++){
-      if (this.productos[i].id === products.id) {
-        this.productos[i].cantidad = parseInt(products.cantidad)+1
-        console.log( this.productos[i].cantidad );      
-      }
-    }
-    localStorage.setItem('list', JSON.stringify(this.productos))
+  }*/
+  cartNumberFunc(){
+    var cartValue=JSON.parse(localStorage.getItem('list'));
+    this.valor=cartValue.length;
+    this.cartService.cartSubject.next(this.valor);
   }
 }
+/*
+
+*/ 
