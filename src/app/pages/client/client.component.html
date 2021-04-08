@@ -21,7 +21,7 @@
     </button> -->
     <button mat-icon-button>
       <!--<span [matBadge]="total$ | async" class="material-icons">-->
-      <span  matBadge="{{valor}}"  matBadgeOverlap="false" class="material-icons">
+      <span  matBadge="{{valor}}"   class="material-icons">
         <mat-icon routerLink="/clients/shoppingCart">shopping_cart</mat-icon>
       </span>
     </button>
@@ -61,7 +61,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary">Ver detalle</button>
-        <button  (click)="addCar(products)"   mat-raised-button color="primary">
+        <button  (click)="addCar(products,valor)"  mat-raised-button color="primary">
           Agregar al carrito
         </button>
       </mat-card-actions>

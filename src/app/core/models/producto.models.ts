@@ -10,4 +10,5 @@ export interface Producto {
   estadoActivacion?: boolean;
   fechaEdicion?: string;
   fechaModificacion?: string;
+  cantidad?:number
 }
