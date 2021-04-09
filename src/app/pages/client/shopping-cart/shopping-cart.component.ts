@@ -12,9 +12,9 @@ export class ShoppingCartComponent implements OnInit {
   public productos: Producto[] = [];
   total: number = 0
   columnas: string[] = ['codigo', 'descripcion', 'unidad', 'total'];
-  constructor(public productosService: ProductosService) { }
+  constructor(public productosService: ProductosService,public cartService: CartService) { }
   ngOnInit(): void {
-    this.getData();
+    this.getData()
   }
   getData(){//Recibimos informacion del LocalStorage
     let getCartDetails
@@ -58,13 +58,8 @@ export class ShoppingCartComponent implements OnInit {
       }
     }  
   }
-  delete(products) {//eliminar del carrito el producto seleccionado
-    for (let i = 0; i < this.productos.length; i++) {
-      if (products.id === this.productos[i].id) {
-        this.productos.splice(i, 1);
-        localStorage.setItem('list', JSON.stringify(this.productos))
-      }
-    }
+  delete(products:Producto,productos:Producto[]) {//eliminar del carrito el producto seleccionado
+    this.cartService.delete(products,productos);
     if (localStorage.getItem('list')) {
       let getCartDetails = JSON.parse(localStorage.getItem('list'))
       this.total = getCartDetails.reduce(function (acc, val) {
