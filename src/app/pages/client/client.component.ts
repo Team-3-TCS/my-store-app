@@ -12,7 +12,7 @@ import { WishlistService } from 'src/app/core/services/wishlist.service';
 })
 export class ClientComponent implements OnInit {
   total$: Observable<number>;
-  
+  total:number=0;
   productos: Producto[] = [];
   valor: number = 0;
   constructor(
@@ -20,21 +20,33 @@ export class ClientComponent implements OnInit {
     public cartService: CartService,
     public wishlistService: WishlistService
   ) {
-    this.total$ = this.wishlistService.currentDataCart$.pipe(
+    /* this.total$ = this.wishlistService.currentDataCart$.pipe(
       map((products) => products.length)
-    );
-    this.cartService.cartSubject.subscribe((data) => {
-      this.valor=data;
+    ); */
+    this.wishlistService.currentDataCart$.subscribe(x=>{
+      if(x){
+        this.total=x.length
+      }
     })
+    /* this.cartService.cartSubject.subscribe((data) => {
+      this.valor=data;
+    }) */
+    this.cartService.currentDataCart$.subscribe((data)=>{
+      this.valor=data.length;
+    })
+
 
   }
   ngOnInit(): void {
-    this.productos = this.obtenerProductos();
+     this.obtenerProductos();
     this.getDatos();
+    this.cartNumberFunc();
+    this.whishlistNumber();
+    
   }
   obtenerProductos() {
-    this.productosService.getProducts();
-    return this.productosService.getProducts();
+      this.productos= this.productosService.getProducts();
+   
   }
   getDatos() {
     if (localStorage.getItem('list') === null) {
@@ -45,11 +57,11 @@ export class ClientComponent implements OnInit {
       let arrayList = JSON.parse(localStorage.getItem('list'));
       this.valor = arrayList.length;
     //  this.cartService.addcart.next(products,this.valor);
-    this.cartNumberFunc()
+   
     }
   }
-  addCar(products,valor){
-    this.cartService.addcart(products,valor);
+  addCar(products:Producto){
+    this.cartService.changeCart(products);
   }
  /* addCar(products:Producto) {
     let count = 0;
@@ -78,9 +90,12 @@ export class ClientComponent implements OnInit {
     }
   }*/
   cartNumberFunc(){
-    var cartValue=JSON.parse(localStorage.getItem('list'));
-    this.valor=cartValue.length;
-    this.cartService.cartSubject.next(this.valor);
+    let cartValue =JSON.parse(localStorage.getItem('list'));
+    this.cartService.cart.next(cartValue);  
+  }
+   whishlistNumber(){
+    let whishlistValue =JSON.parse(localStorage.getItem('listaDeseos'));
+    this.wishlistService.whish.next(whishlistValue);  
   }
   public addWishlist(product:Producto)
   {

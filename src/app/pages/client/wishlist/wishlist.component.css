@@ -133,3 +133,17 @@ h2 {
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
   }
+
+
+
+  /*
+  */
+  .boton4:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 16px rgb(172, 49, 49);
+    transition: all 0.2s ease;
+  }
+  .boton3:hover {
+    background: #d62b42;
+    color: #fff !important;
+  }

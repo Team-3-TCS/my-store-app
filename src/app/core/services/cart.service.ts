@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject } from 'rxjs'
+import {BehaviorSubject} from 'rxjs'
 
 import { Producto } from '../models/producto.models';
 
@@ -7,34 +7,53 @@ import { Producto } from '../models/producto.models';
   providedIn: 'root',
 })
 export class CartService {
-  public cartSubject=new Subject<number>();
-    constructor() {}
-   addcart(products:Producto,valor){
-    let count = 0;
-    if (localStorage.getItem('list')) {
-      let arrayList = JSON.parse(localStorage.getItem('list'));
-      for (let i in arrayList) {
-        if (products.id === arrayList[i].id) {
-          arrayList[i].cantidad += 1;
-        } else {
-          count += 1;
-        }
+  public cart= new BehaviorSubject<Producto[]>([]);
+  public currentDataCart$=this.cart.asObservable();
+ 
+  constructor() { }
+  public changeCart(newData: Producto) {
+    //Obtenemos el valor actual
+     let listCart = this.cart.getValue();
+    //Si no es el primer item del carrito
+    if(listCart)
+    {
+      //Buscamos si ya cargamos ese item en el carrito
+      let objIndex = listCart.findIndex((obj => obj.id == newData.id));
+      //Si ya cargamos uno aumentamos su cantidad
+      if(objIndex != -1)
+      {
+        listCart[objIndex].stock += 1;
       }
-      if (count === arrayList.length) {
-        arrayList.push(products);
-      } else {
-        valor = count;
-        valor -= 0;
-      }
-      localStorage.setItem('list', JSON.stringify(arrayList));
-      valor = arrayList.length;
-      this.cartSubject.next(valor);
-    } else {
-      let arrayList = [];
-      arrayList.push(products);
-      valor = arrayList.length;
-      this.cartSubject.next(valor);
-      localStorage.setItem('list', JSON.stringify(arrayList));
+      //Si es el primer item de ese tipo lo agregamos derecho al carrito
+      else {
+        listCart.push(newData);
+      }  
+      localStorage.setItem('list',JSON.stringify(listCart));
     }
+    //Si es el primer elemento lo inicializamos
+    else {
+      listCart = [];
+      listCart.push(newData);
+      localStorage.setItem('list',JSON.stringify(listCart));
+    }
+    this.cart.next(listCart); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
+  }
+  public removeElementCart(newData:Producto){
+    //Obtenemos el valor actual de carrito
+    let listCart = this.cart.getValue();
+    //Buscamos el item del carrito para eliminar
+    let objIndex = listCart.findIndex((obj => obj.id == newData.id));
+    if(objIndex != -1)
+    {
+      //Seteamos la cantidad en 1 (ya que los array se modifican los valores por referencia, si vovlemos a agregarlo la cantidad no se reiniciará)
+      listCart[objIndex].stock = 1;
+      //Eliminamos el item del array del carrito
+      listCart.splice(objIndex,1);
+      
+    
+    }
+    
+    this.cart.next(listCart); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
+    localStorage.setItem('list',JSON.stringify(listCart));
   }
 }
