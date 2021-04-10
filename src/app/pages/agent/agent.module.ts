@@ -8,6 +8,7 @@ import { AgentComponent } from './agent.component';
 import { EditProductComponent } from './products-agent/new-product/edit-product.component';
 import { NewProductComponent } from './products-agent/new-product/new-product.component';
 import { ProductsAgentComponent } from './products-agent/products-agent.component';
+import { OrdersAgentComponent } from './orders-agent/orders-agent.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ProductsAgentComponent } from './products-agent/products-agent.componen
     ProductsAgentComponent,
     NewProductComponent,
     EditProductComponent,
+    OrdersAgentComponent,
   ],
   imports: [
     CommonModule,
