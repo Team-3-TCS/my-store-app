@@ -11,6 +11,7 @@ import { NewProductComponent } from './products-agent/new-product/new-product.co
 import { ProductsAgentComponent } from './products-agent/products-agent.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrdersAgentComponent } from './orders-agent/orders-agent.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { OrdersAgentComponent } from './orders-agent/orders-agent.component';
     EditProductComponent,
     OrdersAgentComponent,
     DashboardComponent,
+    ReportsComponent,
   ],
   imports: [
     CommonModule,
