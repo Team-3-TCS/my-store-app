@@ -1,102 +1,74 @@
-
-<div class="container-fluid">
-  <div class="row">
-    <aside class="col-lg-9">
-      <div class="card" *ngIf="productos.length!=0;">
-        <div class="table-responsive">
-          <table class="table table-borderless table-shopping-cart">
-            <thead class="text-muted">
-              <tr class="small text-uppercase " style="font-size:15px;text-align: left;">
-                <th scope="col" width="40%">Producto</th>
-                <th scope="col" width="20%">Cantidad</th>
-                <th scope="col" width="10%">unidad</th>
-                <th scope="col" width="10%">Total</th>
-                <th scope="col" class="text-right d-none d-md-block" width="5%"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let products of productos">
-                <td>
-                  <figure class="itemside ">
-                    <div class="aside">
-                      <img src="{{products?.imagen}}" class="img-sm">
-                    </div>
-                    <figcaption class="info">
-                      <a href="#" class="title text-dark" data-abc="true">
-
-                      </a>
-                      <p class="text-muted small">{{products?.nombre}} <br> {{products.descripcion}}
-                      </p>
-                    </figcaption>
-                  </figure>
-                </td>
-                <td>
-                  <div class="content" style="margin-right: 0">
-
-                    <button class="btn btn-primary" type="button" (click)="increase(products)"><i
-                        class="fa fa-plus"></i></button>
-                    <span>{{products?.cantidad}}</span>
-                    <button class="btn btn-primary" type="button" (click)="diminish(products)"><i
-                        class="fa fa-minus"></i></button>
-                  </div>
-                </td>
-                <td>
-                  <div class="price-wrap" style="margin-top: 15px"> <var class="price"
-                      style="font-size:20px;">{{products?.precio| currency}}</var>
-                  </div>
-                </td>
-                <td>
-                  <div class="price-wrap" style="margin-top: 15px"> <var class="total"
-                      style="font-size:20px;">{{products.cantidad*products.precio|currency}}</var> 
-                  </div>
-                </td>
-                <td class="text-left d-none d-md-block" style=" margin-left:0px">
-                  <button (click)="delete(products)" class="material-icons">delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+<div class="container">
+  <div *ngIf="productos.length === 0;" class="text-center my-5">
+    <div class="col-md-12">   
+        <div class="card-body cart">
+          <div class="col-sm-12 empty-cart-cls text-center"> <img src="https://letrasrecortadas.com/carritoVacio.png" width="400"
+              height="400" class="img-fluid mb-4 mr-3">
+            <h3><strong>Tu carrito esta vacio</strong></h3>
+            <h4>Add something to make me happy :)</h4> 
+          </div>
         </div>
-      </div>
-      
-    </aside>
-    <aside *ngIf="productos.length>0" class="col-lg-3">
-      <div class="card mb-3">
-        <div class="card-body">
-          <form>
-            <div class="form-group"> <label>Tienes cupon?</label>
-              <div class="input-group"> <input type="text" class="form-control coupon" name=""
-                  placeholder="Ingresa tu codigo"> <span class="input-group-append"> <button
-                    class="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <dl class="dlist-align">
-            <dt>Total precio:</dt>
-            <dd class="text-right ml-3">{{total|currency}}</dd>
-          </dl>
-          <dl class="dlist-align">
-            <dt>Descuento:</dt>
-            <dd class="text-right text-danger ml-3">- $00.00</dd>
-          </dl>
-          <hr>
-          <dl class="dlist-align" >
-            <dt>Total:</dt>
-            <dd class="text-right text-dark b ml-3"><strong> {{total|currency}}</strong></dd>
-          </dl>
-          <hr>
-          <a href="/clients" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Seguir buscando</a>
-          <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continuar compra</a>
-        </div>
-      </div>
-    </aside>
+    </div>
+    <button class="btn btn-primary btn-lg mt-3" routerLink="/clients">Seguir comprando</button>
   </div>
-</div>
-<div *ngIf="productos.length===0">
-  <h1>NO HAY NINGUN PRODUCTO DISPONIBLE</h1>
-  <a href="/clients">Volver</a>
-  <!--UN HTML EMPTY SHOPPING CART?-->
+  <ng-container *ngIf="productos.length !== 0">
+    <div class="row">
+      <div class="col my-4">
+        <table class="table">
+          <thead class="table-dark">
+            <tr class="text-center">
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let products of productos; let i=index">
+              <td class="d-flex align-items-center justify-content-around">
+                <img src="{{products?.imagen}}" alt="{products.name}}" height="60" class="order-1">
+                <span class="text-danger" style="cursor: pointer;"><i class="fa fa-trash"
+                    (click)="delete(products,productos)"></i></span>
+              </td>
+              <td>
+                <p>{{products?.nombre}}</p>
+              </td>
+              <td>
+                <p>{{products?.precio| currency}}</p>
+              </td>
+              <td>
+                <form>
+                  <div class="value-button" id="decrease" (click)="diminish(products)">
+                    <i class="fa fa-minus"></i>
+                  </div>
+                  <input type="number" id="number" value="{{products?.cantidad}}" readonly
+                    max="{{products?.cantidad}}" />
+                  <div class="value-button" id="increase" (click)="increase(products)">
+                    <i class="fa fa-plus"></i>
+                  </div>
+                </form>
+              </td>
+              <td>
+                <h2>{{products.cantidad*products.precio|currency}}</h2>
+              </td>
+            </tr>
+            <tr class="border-0">
+              <td style="border: none;"></td>
+              <td style="border: none;"></td>
+              <td style="border: none;"></td>
+              <td>TOTAL</td>
+              <td>{{total|currency}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-12 d-flex mb-5">
+        <div class="d-flex w-100 justify-content-between flex-sm-column flex-md-row">
+          <a routerLink="/clients/purchase" class="btn btn-danger btn-sm order-1">Checkout</a>
+          <a routerLink="/clients/" class="btn btn-success btn-sm order-0">Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>

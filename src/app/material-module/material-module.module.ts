@@ -8,8 +8,8 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -45,6 +45,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+//ngx spinner
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   exports: [
@@ -92,9 +95,12 @@ import { MatTreeModule } from '@angular/material/tree';
     MatInputModule,
     MatGridListModule,
     MatCardModule,
+    NgxSpinnerModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [],
   imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MaterialModuleModule {}

@@ -10,6 +10,7 @@ import { EditProductComponent } from './products-agent/new-product/edit-product.
 import { NewProductComponent } from './products-agent/new-product/new-product.component';
 import { ProductsAgentComponent } from './products-agent/products-agent.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrdersAgentComponent } from './orders-agent/orders-agent.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ProductsAgentComponent,
     NewProductComponent,
     EditProductComponent,
+    OrdersAgentComponent,
     DashboardComponent,
   ],
   imports: [

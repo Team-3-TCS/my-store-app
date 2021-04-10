@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductosService } from 'src/app/core/services/productos.service';
 import { Producto } from 'src/app/core/models/producto.models';
+import { WishlistService } from 'src/app/core/services/wishlist.service';
 @Component({
   selector: 'app-clientes',
   templateUrl: './client.component.html',
@@ -11,12 +12,17 @@ import { Producto } from 'src/app/core/models/producto.models';
 })
 export class ClientComponent implements OnInit {
   total$: Observable<number>;
+  
   productos: Producto[] = [];
   valor: number = 0;
   constructor(
     public productosService: ProductosService,
-    public cartService: CartService
+    public cartService: CartService,
+    public wishlistService: WishlistService
   ) {
+    this.total$ = this.wishlistService.currentDataCart$.pipe(
+      map((products) => products.length)
+    );
     this.cartService.cartSubject.subscribe((data) => {
       this.valor=data;
     })
@@ -75,6 +81,12 @@ export class ClientComponent implements OnInit {
     var cartValue=JSON.parse(localStorage.getItem('list'));
     this.valor=cartValue.length;
     this.cartService.cartSubject.next(this.valor);
+  }
+  public addWishlist(product:Producto)
+  {
+    this.wishlistService.changeWishlist(product);
+   
+    
   }
 }
 /*

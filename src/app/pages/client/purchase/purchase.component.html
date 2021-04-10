@@ -1,0 +1,158 @@
+<ngx-spinner bdColor="rgba(151,149,149,0.4)" size="large" color="orange" type="ball-clip-rotate-pulse"
+    fullScreen="true">
+    <p style="font-size: 20px; color: black">Booking Order...</p>
+</ngx-spinner>
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h1 class="title">Facturacion</h1>
+                    </div>
+                    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+                        <label>Nombres</label>
+                        <input type="text" formControlName="firstname" class="form-control"
+                            [ngClass]="{ 'is-invalid':  form.firstname.errors }" placeholder="Nombres" />
+                        <div *ngIf="form.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="form.firstname.errors.required&&form.lastname.touched">El nombre es obligatorio
+                            </div>
+                        </div>
+                        <label>Apellidos</label>
+                        <input type="text" formControlName="lastname" class="form-control"
+                            [ngClass]="{ 'is-invalid':  form.lastname.errors }" placeholder="Apellidos" />
+                        <div *ngIf="form.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="form.lastname.errors.required&&form.lastname.touched">Los apellidos son
+                                obligatorios</div>
+                        </div>
+                        <label>DNI</label>
+                        <input type="text" formControlName="dni" class="form-control"
+                            [ngClass]="{ 'is-invalid':  form.dni.errors }" placeholder="DNI" />
+                        <div *ngIf="form.dni.errors" class="invalid-feedback">
+                            <div *ngIf="form.dni.errors.required&&form.lastname.touched">El DNI es obligatorio</div>
+                            <div *ngIf="form.dni.errors.pattern||form.dni.errors.maxlength">El DNI debe contar con 8
+                                digitos</div>
+                        </div>
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control"
+                            [ngClass]="{ 'is-invalid': form.email.errors }" placeholder="Correo electronico" />
+                        <div *ngIf="form.email.errors" class="invalid-feedback">
+                            <div *ngIf="form.email.errors.required&&form.lastname.touched">El email es obligatorio</div>
+                            <div *ngIf="form.email.errors.email">El email debe de ser válido</div>
+                        </div>
+                        <label>Celular</label>
+                        <input type="tel" formControlName="phone" class="form-control"
+                            [ngClass]="{ 'is-invalid':  form.phone.errors}" placeholder="Celular" />
+                        <div *ngIf="form.phone.errors" class="invalid-feedback">
+                            <div *ngIf="form.phone.errors.required&&form.phone.touched">El numero de celular es
+                                obligatorio</div>
+                            <div *ngIf="form.phone.errors.pattern">El numero de celular debe contar con 9 digitos</div>
+                        </div>
+                        <label>direccion</label>
+                        <input type="text" formControlName="address" class="form-control"
+                            [ngClass]="{ 'is-invalid':  form.address.errors }" placeholder="Direccion" />
+                        <div *ngIf="form.address.errors" class="invalid-feedback">
+                            <div *ngIf="form.address.errors.required&&form.lastname.touched">La direccion eses
+                                obligatorio</div>
+                        </div>
+                        <label>ciudad</label>
+                        <select class="form-select" type="select" formControlName="city"
+                            [ngClass]="{ 'is-invalid':  form.city.errors }">
+                            <option value="">Ciudad</option>
+                            <option *ngFor="let city of departamento" [ngValue]="city">
+                                {{city}}
+                            </option>
+                        </select>
+                        <div *ngIf="form.city.errors" class="invalid-feedback">
+                            <div *ngIf="form.city.errors.required&&form.lastname.touched">La ciudad es obligatoria</div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /Billing Details -->
+                <!-- Order notes -->
+                <div class="order-notes">
+                    <textarea class="input" placeholder="Referencia de ubicacion"></textarea>
+                </div>
+                <!-- /Order notes -->
+            </div>
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                    <h2 class="title">Tu orden</h2>
+                </div>
+                <div class="order-summary">
+                    <div class="order-col">
+                        <div><strong>PRODUCTO</strong></div>
+                        <div><strong>SubTotal</strong></div>
+                    </div>
+                    <div class="order-products">
+                        <div class="order-col" *ngFor="let products of productos">
+                            <div>{{products.cantidad}} x {{products.nombre}}</div>
+                            <div>{{products.cantidad*products.precio|currency}}</div>
+                        </div>
+                    </div>
+                    <!--
+                       <div class="order-col">
+                        <div>Shipping</div>
+                        <div><strong>FREE</strong></div>
+                        </div>
+                   -->
+                    <div class="order-col dropdown-divider">
+                        <div><strong>TOTAL</strong></div>
+                        <div><strong class="order-total">{{total | currency:'USD'}}</strong></div>
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-1">
+                        <label for="payment-1">
+                            <span></span>
+                            Transferencia bancaria
+                        </label>
+                        <div class="caption">
+                            <p>Se implentara pronto...</p>
+                        </div>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-2">
+                        <label for="payment-2">
+                            <span></span>
+                            Pago por tarjeta
+                        </label>
+                        <div class="caption">
+                            <p>Se implentara pronto...</p>
+                        </div>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-3">
+                        <label for="payment-3">
+                            <span></span>
+                            Pago por paypal
+                        </label>
+                        <div class="caption">
+                            <p>Se implentara pronto...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-checkbox">
+                    <input type="checkbox" id="terms">
+                    <!--
+                     <label for="terms">
+                        <span></span>
+                        I've read and accept the <a href="#">terms & conditions</a>
+                    </label>
+                 -->
+                </div>
+                <button routerLink="/clients" [disabled]="registerForm.invalid" type="submit"
+                    class="btn-outline-danger btn-sm my-2 btn-block">Comprar</button>
+            </div>
+            <!-- /Order Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
