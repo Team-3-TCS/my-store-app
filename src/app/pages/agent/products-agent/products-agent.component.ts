@@ -1,49 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/core/models/producto.models';
 import { MensajeConfirmacionComponent } from 'src/app/shared/mensaje-confirmacion/mensaje-confirmacion.component';
 import { ProductsService } from '../../../services/products.service';
 
-//datos de prueba
 @Component({
   selector: 'app-products-agent',
   templateUrl: './products-agent.component.html',
   styleUrls: ['./products-agent.component.css'],
 })
 export class ProductsAgentComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  dataSource: MatTableDataSource<Producto>;
+
+  selection = new SelectionModel<Producto>(true, []);
+
   static edit: boolean = false;
   static id: number = 0;
   datos: Producto[] = [];
-  data;
-  dataSource;
 
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute,
-    private productsService: ProductsService,
-    private router: Router
+    private productsService: ProductsService
   ) {}
 
   ngOnInit(): void {
     this.datos = this.productsService.getProducts();
-    this.data = Object.assign(this.datos);
-    this.dataSource = new MatTableDataSource<Producto>(this.data);
-    this.dataSource = this.datos;
+    this.dataSource = new MatTableDataSource(this.datos);
   }
-  columnas: string[] = [
-    'codigo',
-    'idCategoria',
-    'nombre',
-    'descripcion',
-    'precio',
-    'stock',
-    'modificar',
-    'eliminar',
-  ];
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+  columns: string[] = ['select', 'nombre', 'precio', 'stock', 'acciones'];
 
   agregar() {
     ProductsAgentComponent.edit = false;
@@ -63,12 +60,43 @@ export class ProductsAgentComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'aceptar') {
-        this.data.splice(id, 1);
-        this.dataSource = new MatTableDataSource<Producto>(this.data);
+        this.datos.splice(id, 1);
+        this.dataSource = new MatTableDataSource<Producto>(this.datos);
+        this.dataSource.paginator = this.paginator;
         this.snackBar.open('El producto fue eliminado con exito!', '', {
           duration: 3000,
         });
       }
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: Producto): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+      row.id
+    }`;
   }
 }

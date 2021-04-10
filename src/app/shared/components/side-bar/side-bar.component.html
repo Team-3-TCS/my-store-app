@@ -1,31 +1,35 @@
 <mat-nav-list>
   <div class="profile-card">
     <div class="header">
-      <h2>Dipper</h2>
-      <h4>dipper131996@gmail.com</h4>
+      <h2>
+        {{ person?.nombre }} {{ person?.apellido_paterno }}
+        {{ person?.apellido_materno }}
+      </h2>
+      <h4>{{ person?.correo }}</h4>
     </div>
-    <img src="assets/img/imagen.png" alt="" />
+    <img src="{{ user?.img_profile }}" alt="" />
   </div>
   <mat-divider> </mat-divider>
 
-  <h2 matSubheader>Pages</h2>
+  <h2 matSubheader>Paginas</h2>
 
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/">
-    Dashboard
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/agent">
+    <mat-icon>home</mat-icon> INICIO
   </a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">
-    Post
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="/agent/products"
+  >
+    <mat-icon> content_paste </mat-icon> PRODUCTOS
   </a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/article">
-    Article
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/orders">
+    <mat-icon> shopping_bag </mat-icon> ORDENES
   </a>
 
-  <h2 matSubheader>Tools</h2>
+  <h2 matSubheader>Herramientas</h2>
 
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-    <mat-icon>import_contacts</mat-icon> Contacts
-  </a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-    <mat-icon>contact_phone</mat-icon> Leads
+    <mat-icon> wysiwyg</mat-icon> REPORTES
   </a>
 </mat-nav-list>

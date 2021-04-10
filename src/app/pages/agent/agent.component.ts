@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AgentService } from 'src/app/core/services/agent.service';
 
 @Component({
   selector: 'app-agent',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agent.component.css'],
 })
 export class AgentComponent implements OnInit {
+  agent;
   sideBarOpen = false;
-  constructor() {}
+  constructor(private agentService: AgentService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.agent = this.agentService.getAgent();
+  }
 
   sideBarToggler(event) {
     this.sideBarOpen = !this.sideBarOpen;
