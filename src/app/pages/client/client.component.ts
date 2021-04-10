@@ -15,6 +15,7 @@ export class ClientComponent implements OnInit {
   total$: Observable<number>;
   total:number=0;
   productos: Producto[] = [];
+  cart:Producto[]=[];
   valor: number = 0;
   constructor(
     public productosService: ProductosService,
@@ -27,7 +28,7 @@ export class ClientComponent implements OnInit {
     ); */
     this.wishlistService.currentDataCart$.subscribe(x=>{
       if(x){
-        this.total=x.length
+        this.valor=x.length
       }
     })
     /* this.cartService.cartSubject.subscribe((data) => {
@@ -40,11 +41,17 @@ export class ClientComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    
      this.obtenerProductos();
     this.getDatos();
     this.cartNumberFunc();
     this.whishlistNumber();
-    
+    if (localStorage.getItem('list') === null) {
+      this.cart = JSON.parse(localStorage.getItem('list'));
+    } else {
+      this.cart = JSON.parse(localStorage.getItem('list'));
+
+    }
   }
   obtenerProductos() {
       this.productos= this.productosService.getProducts();
@@ -64,8 +71,10 @@ export class ClientComponent implements OnInit {
   }
   addCar(products:Producto){
     this.cartService.changeCart(products);
+    
     this.toastr.success('El producto ha sido añadido con exito!','Añadido al carrito',{
       timeOut:1500
+      
     });
   }
  /* addCar(products:Producto) {

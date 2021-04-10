@@ -86,13 +86,13 @@
               </a>
               <div class="cart-dropdown">
                 <div class="cart-list">
-                  <div class="product-widget" *ngFor="let products of productos">
+                  <div class="product-widget" *ngFor="let products of cart">
                     <div class="product-img">
                       <img [src]="products.imagen" alt="">
                     </div>
                     <div class="product-body">
                       <h3 class="product-name"><a href="#">{{products.descripcion}}</a></h3>
-                      <h4 class="product-price"><span class="qty">1x</span>{{products.precio|currency}}</h4>
+                      <h4 class="product-price"><span class="qty">{{products.cantidad}} x</span>{{products.precio|currency}}</h4>
                     </div>
                     <button class="delete"><i class="fa fa-close"></i></button>
                   </div>
@@ -110,16 +110,15 @@
                 </div>
                 <div class="cart-summary">
                   <small>{{valor}} Item(s) selected</small>
-                  <h5>SUBTOTAL: $2940.00</h5>
+                 <!--<h5>SUBTOTAL: $2940.00</h5>--> 
                 </div>
                 <div class="cart-btns">
-                  <a href="#">View Cart</a>
-                  <a routerLink="/clients/shoppingCart">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                  <a routerLink="/clients/shoppingCart">View Cart</a>
+                  <a routerLink="/clients/purchase">Checkout<i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             </div>
             <!-- /Cart -->
-
             <!-- Menu Toogle -->
             <div class="menu-toggle">
               <a href="#">
