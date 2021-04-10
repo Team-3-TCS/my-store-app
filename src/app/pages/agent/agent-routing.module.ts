@@ -6,6 +6,8 @@ import { ProductsAgentComponent } from './products-agent/products-agent.componen
 import { NewProductComponent } from './products-agent/new-product/new-product.component';
 import { EditProductComponent } from './products-agent/new-product/edit-product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrdersAgentComponent } from './orders-agent/orders-agent.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,14 @@ const routes: Routes = [
       {
         path: 'products/:id',
         component: EditProductComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersAgentComponent,
+      },
+      {
+        path: 'reports',
+        component: ReportsComponent,
       },
     ],
   },
