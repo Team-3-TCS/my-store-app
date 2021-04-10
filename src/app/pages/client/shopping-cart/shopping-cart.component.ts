@@ -12,9 +12,11 @@ export class ShoppingCartComponent implements OnInit {
   public productos: Producto[] = [];
   total: number = 0
   columnas: string[] = ['codigo', 'descripcion', 'unidad', 'total'];
+
   constructor(public productosService: ProductosService,private cartService:CartService) { }
+
   ngOnInit(): void {
-    this.getData();
+    this.getData()
   }
   getData(){//Recibimos informacion del LocalStorage
     let getCartDetails
@@ -67,6 +69,7 @@ export class ShoppingCartComponent implements OnInit {
     } */
     this.cartService.removeElementCart(products);
       this.getData();
+
     if (localStorage.getItem('list')) {
       let getCartDetails = JSON.parse(localStorage.getItem('list'))
       this.total = getCartDetails.reduce(function (acc, val) {

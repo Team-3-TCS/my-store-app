@@ -56,4 +56,21 @@ export class CartService {
     this.cart.next(listCart); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
     localStorage.setItem('list',JSON.stringify(listCart));
   }
+  delete (products:Producto,productos:Producto[]){
+    for (let i = 0; i < productos.length; i++) {
+      if (products.id === productos[i].id) {
+        productos.splice(i, 1);
+        localStorage.setItem('list', JSON.stringify(productos))
+      }
+    }
+  }
+  monto(valor) {
+    if (localStorage.getItem('list')) {
+      let getCartDetails = JSON.parse(localStorage.getItem('list'))
+      valor = getCartDetails.reduce(function (acc, val) {
+        return acc + (val.precio * val.cantidad)
+      }, 0)
+    }
+
+  }
 }
