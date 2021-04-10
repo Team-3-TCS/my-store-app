@@ -6,7 +6,7 @@ import { Producto } from '../models/producto.models';
   providedIn: 'root'
 })
 export class WishlistService {
-  private whish= new BehaviorSubject<Producto[]>([]);
+  public whish= new BehaviorSubject<Producto[]>([]);
   public currentDataCart$=this.whish.asObservable();
  
   constructor() { }
@@ -27,11 +27,13 @@ export class WishlistService {
       else {
         listCart.push(newData);
       }  
+      localStorage.setItem('listaDeseos',JSON.stringify(listCart));
     }
     //Si es el primer elemento lo inicializamos
     else {
       listCart = [];
       listCart.push(newData);
+      localStorage.setItem('listaDeseos',JSON.stringify(listCart));
     }
     this.whish.next(listCart); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
   }
@@ -46,7 +48,11 @@ export class WishlistService {
       listCart[objIndex].stock = 1;
       //Eliminamos el item del array del carrito
       listCart.splice(objIndex,1);
+      
+    
     }
+    
     this.whish.next(listCart); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
+    localStorage.setItem('listaDeseos',JSON.stringify(listCart));
   }
 }

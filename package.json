@@ -11,8 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.1",
-    "@angular/cdk": "^11.2.8",
+    "@angular/animations": "^11.2.9",
+    "@angular/cdk": "^11.2.7",
     "@angular/common": "~11.2.1",
     "@angular/compiler": "~11.2.1",
     "@angular/core": "~11.2.1",
@@ -25,6 +25,7 @@
     "highcharts": "^9.0.1",
     "highcharts-angular": "^2.10.0",
     "ngx-spinner": "^11.0.1",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "sweetalert2": "^10.15.7",
     "tslib": "^2.0.0",

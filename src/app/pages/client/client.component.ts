@@ -5,6 +5,7 @@ import { CartService } from 'src/app/core/services/cart.service';
 import { ProductosService } from 'src/app/core/services/productos.service';
 import { Producto } from 'src/app/core/models/producto.models';
 import { WishlistService } from 'src/app/core/services/wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-clientes',
   templateUrl: './client.component.html',
@@ -12,29 +13,42 @@ import { WishlistService } from 'src/app/core/services/wishlist.service';
 })
 export class ClientComponent implements OnInit {
   total$: Observable<number>;
-  
+  total:number=0;
   productos: Producto[] = [];
   valor: number = 0;
   constructor(
     public productosService: ProductosService,
     public cartService: CartService,
-    public wishlistService: WishlistService
+    public wishlistService: WishlistService,
+    private toastr: ToastrService
   ) {
-    this.total$ = this.wishlistService.currentDataCart$.pipe(
+    /* this.total$ = this.wishlistService.currentDataCart$.pipe(
       map((products) => products.length)
-    );
-    this.cartService.cartSubject.subscribe((data) => {
-      this.valor=data;
+    ); */
+    this.wishlistService.currentDataCart$.subscribe(x=>{
+      if(x){
+        this.total=x.length
+      }
     })
+    /* this.cartService.cartSubject.subscribe((data) => {
+      this.valor=data;
+    }) */
+    this.cartService.currentDataCart$.subscribe((data)=>{
+      this.valor=data.length;
+    })
+
 
   }
   ngOnInit(): void {
-    this.productos = this.obtenerProductos();
+     this.obtenerProductos();
     this.getDatos();
+    this.cartNumberFunc();
+    this.whishlistNumber();
+    
   }
   obtenerProductos() {
-    this.productosService.getProducts();
-    return this.productosService.getProducts();
+      this.productos= this.productosService.getProducts();
+   
   }
   getDatos() {
     if (localStorage.getItem('list') === null) {
@@ -45,11 +59,14 @@ export class ClientComponent implements OnInit {
       let arrayList = JSON.parse(localStorage.getItem('list'));
       this.valor = arrayList.length;
     //  this.cartService.addcart.next(products,this.valor);
-    this.cartNumberFunc()
+   
     }
   }
-  addCar(products,valor){
-    this.cartService.addcart(products,valor);
+  addCar(products:Producto){
+    this.cartService.changeCart(products);
+    this.toastr.success('El producto ha sido añadido con exito!','Añadido al carrito',{
+      timeOut:1500
+    });
   }
  /* addCar(products:Producto) {
     let count = 0;
@@ -78,14 +95,17 @@ export class ClientComponent implements OnInit {
     }
   }*/
   cartNumberFunc(){
-    var cartValue=JSON.parse(localStorage.getItem('list'));
-    this.valor=cartValue.length;
-    this.cartService.cartSubject.next(this.valor);
+    let cartValue =JSON.parse(localStorage.getItem('list'));
+    this.cartService.cart.next(cartValue);  
+  }
+   whishlistNumber(){
+    let whishlistValue =JSON.parse(localStorage.getItem('listaDeseos'));
+    this.wishlistService.whish.next(whishlistValue);  
   }
   public addWishlist(product:Producto)
   {
     this.wishlistService.changeWishlist(product);
-   
+     this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
     
   }
 }
