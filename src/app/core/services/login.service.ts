@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Persona } from '../models/persona.model';
 import { Rol } from '../models/rol.model';
 import { Usuario } from '../models/usuario.models';
+import { AgentService } from './agent.service';
 import { PersonService } from './person.service';
 import { RoleService } from './role.service';
 import { UserService } from './user.service';
@@ -18,7 +19,8 @@ export class LoginService {
     private personService: PersonService,
     private userService: UserService,
     private roleService: RoleService,
-    public router: Router
+    public router: Router,
+    private agentService: AgentService
   ) {}
 
   login(email: string, password: string) {
@@ -36,6 +38,7 @@ export class LoginService {
             break;
           case 'AGENT':
             this.router.navigateByUrl('/agent');
+            this.agentService.setAgent(this.person, this.user);
             break;
 
           default:

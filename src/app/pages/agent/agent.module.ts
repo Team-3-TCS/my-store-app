@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MaterialModuleModule } from 'src/app/material-module/material-module.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -8,6 +9,7 @@ import { AgentComponent } from './agent.component';
 import { EditProductComponent } from './products-agent/new-product/edit-product.component';
 import { NewProductComponent } from './products-agent/new-product/new-product.component';
 import { ProductsAgentComponent } from './products-agent/products-agent.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { ProductsAgentComponent } from './products-agent/products-agent.componen
     ProductsAgentComponent,
     NewProductComponent,
     EditProductComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +25,7 @@ import { ProductsAgentComponent } from './products-agent/products-agent.componen
     SharedModule,
     MaterialModuleModule,
     FormsModule,
+    FlexLayoutModule,
   ],
 })
 export class AgentModule {}

@@ -5,12 +5,17 @@ import { AgentComponent } from './agent.component';
 import { ProductsAgentComponent } from './products-agent/products-agent.component';
 import { NewProductComponent } from './products-agent/new-product/new-product.component';
 import { EditProductComponent } from './products-agent/new-product/edit-product.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AgentComponent,
     children: [
+      {
+        path: '',
+        component: DashboardComponent,
+      },
       {
         path: 'products',
         component: ProductsAgentComponent,
