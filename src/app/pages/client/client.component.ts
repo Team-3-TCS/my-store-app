@@ -5,6 +5,7 @@ import { CartService } from 'src/app/core/services/cart.service';
 import { ProductosService } from 'src/app/core/services/productos.service';
 import { Producto } from 'src/app/core/models/producto.models';
 import { WishlistService } from 'src/app/core/services/wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-clientes',
   templateUrl: './client.component.html',
@@ -18,7 +19,8 @@ export class ClientComponent implements OnInit {
   constructor(
     public productosService: ProductosService,
     public cartService: CartService,
-    public wishlistService: WishlistService
+    public wishlistService: WishlistService,
+    private toastr: ToastrService
   ) {
     /* this.total$ = this.wishlistService.currentDataCart$.pipe(
       map((products) => products.length)
@@ -62,6 +64,9 @@ export class ClientComponent implements OnInit {
   }
   addCar(products:Producto){
     this.cartService.changeCart(products);
+    this.toastr.success('El producto ha sido añadido con exito!','Añadido al carrito',{
+      timeOut:1500
+    });
   }
  /* addCar(products:Producto) {
     let count = 0;
@@ -100,7 +105,7 @@ export class ClientComponent implements OnInit {
   public addWishlist(product:Producto)
   {
     this.wishlistService.changeWishlist(product);
-   
+     this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
     
   }
 }

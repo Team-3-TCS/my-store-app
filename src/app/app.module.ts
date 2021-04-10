@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MaterialModuleModule } from './material-module/material-module.module';
 import { MensajeConfirmacionComponent } from './shared/mensaje-confirmacion/mensaje-confirmacion.component';
 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent, MensajeConfirmacionComponent],
@@ -17,6 +18,7 @@ import { MensajeConfirmacionComponent } from './shared/mensaje-confirmacion/mens
     MaterialModuleModule,
     AppRoutingModule,
     FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

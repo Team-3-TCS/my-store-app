@@ -48,6 +48,8 @@ import { MatTreeModule } from '@angular/material/tree';
 //ngx spinner
 import { NgxSpinnerModule } from "ngx-spinner";
 
+
+
 @NgModule({
   exports: [
     A11yModule,
@@ -96,6 +98,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MatCardModule,
     FormsModule,
     NgxSpinnerModule
+    
   ],
   declarations: [],
   imports: [CommonModule],
