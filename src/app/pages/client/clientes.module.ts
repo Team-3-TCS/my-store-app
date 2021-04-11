@@ -6,10 +6,13 @@ import { MaterialModuleModule } from 'src/app/material-module/material-module.mo
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { WishlistComponent} from './wishlist/wishlist.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 @NgModule({
   declarations: [ClientComponent, ShoppingCartComponent, PurchaseComponent, WishlistComponent],
-  imports: [CommonModule, ClientesRoutingModule, MaterialModuleModule],
+  imports: [CommonModule, ClientesRoutingModule, MaterialModuleModule,
+  SharedModule],
 })
 export class ClientesModule {}
