@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     if (localStorage.getItem('list') === null) {
       this.cart = JSON.parse(localStorage.getItem('list'));
     } else {
@@ -35,6 +36,30 @@ export class HeaderComponent implements OnInit {
 
     }
   }
+  getDatos() {
+    if (localStorage.getItem('list') === null) {
+      this.valor = 0;
+      let arrayList = JSON.parse(localStorage.getItem('list'));
+      this.valor = arrayList.length;
+    } else {
+      let arrayList = JSON.parse(localStorage.getItem('list'));
+      this.valor = arrayList.length;
+    //  this.cartService.addcart.next(products,this.valor);
+   
+    }
+  }
 
+  
+    remove(product:Producto){
+      this.cartService.removeElementCart(product);
+      this.getDatos();
+
+    if (localStorage.getItem('list')) {
+      let getCartDetails = JSON.parse(localStorage.getItem('list'))
+      this.total = getCartDetails.reduce(function (acc, val) {
+        return acc + (val.precio * val.cantidad)
+      }, 0)
+    }
+    }
   
 }

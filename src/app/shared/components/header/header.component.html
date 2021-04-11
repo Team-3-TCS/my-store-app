@@ -120,7 +120,7 @@
                           >{{ products.precio | currency }}
                         </h4>
                       </div>
-                      <button class="delete"><i class="fa fa-close"></i></button>
+                      <button class="delete"><i (click)="remove(products)"class="fa fa-close"></i></button>
                     </div>
   
                     <!--  <div class="product-widget">
