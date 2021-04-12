@@ -1,8 +1,8 @@
-export interface producto {
+export interface Producto {
   id?: number;
   idCategoria?: number;
   idVendedor?: number;
-  nombre: string;
+  nombre?: string;
   descripcion: string;
   precio: number;
   imagen?: string;
@@ -10,4 +10,5 @@ export interface producto {
   estadoActivacion?: boolean;
   fechaEdicion?: string;
   fechaModificacion?: string;
+  cantidad?:number
 }

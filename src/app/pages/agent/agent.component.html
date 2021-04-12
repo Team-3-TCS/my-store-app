@@ -1,2 +1,10 @@
-<p>agent works!</p>
-<router-outlet></router-outlet>
+<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-side-bar [agent]="agent"></app-side-bar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-footer></app-footer>

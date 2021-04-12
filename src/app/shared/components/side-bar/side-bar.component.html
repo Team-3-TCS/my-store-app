@@ -1,0 +1,43 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <h2>
+        {{ person?.nombre }} {{ person?.apellido_paterno }}
+        {{ person?.apellido_materno }}
+      </h2>
+      <h4>{{ person?.correo }}</h4>
+    </div>
+    <img src="{{ user?.img_profile }}" alt="" />
+  </div>
+  <mat-divider> </mat-divider>
+
+  <h2 matSubheader>Paginas</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/agent">
+    <mat-icon>home</mat-icon> INICIO
+  </a>
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="/agent/products"
+  >
+    <mat-icon> content_paste </mat-icon> PRODUCTOS
+  </a>
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="/agent/orders"
+  >
+    <mat-icon> shopping_bag </mat-icon> ORDENES
+  </a>
+
+  <h2 matSubheader>Herramientas</h2>
+
+  <a
+    mat-list-item
+    routerLinkActive="list-item-active"
+    routerLink="/agent/reports"
+  >
+    <mat-icon> wysiwyg</mat-icon> REPORTES
+  </a>
+</mat-nav-list>

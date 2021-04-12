@@ -5,6 +5,16 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
@@ -12,10 +22,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/agent/agent.module').then((m) => m.AgentModule),
   },
+  {
+    path: 'clients',
+    loadChildren: () =>
+      import('./pages/client/clientes.module').then((m) => m.ClientesModule),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,4 +1,4 @@
-export interface persona{
+export interface Cliente{
   id?: number;
   usuario?: string;
   nombre: string;
