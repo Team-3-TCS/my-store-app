@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientComponent } from './client.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ViewProductComponent } from './view-product/view-product.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path:'wishlist',
     component: WishlistComponent
+  },
+  {
+    path:'viewproduct',
+    component: ViewProductComponent
   }
 ];
 @NgModule({
