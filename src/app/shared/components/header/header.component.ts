@@ -11,7 +11,8 @@ import { WishlistService } from 'src/app/core/services/wishlist.service';
 export class HeaderComponent implements OnInit {
     valor:number=0;
     total:number=0;
-    cart:Producto[]=[];
+    total2:number=0;
+    productos:Producto[]=[];
   constructor(private cartService:CartService, private wishlistService:WishlistService) {
     this.wishlistService.currentDataCart$.subscribe(x=>{
       if(x){
@@ -29,11 +30,18 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if (localStorage.getItem('list') === null) {
-      this.cart = JSON.parse(localStorage.getItem('list'));
-    } else {
-      this.cart = JSON.parse(localStorage.getItem('list'));
-
+    this.getData();
+  }
+  getData(){//Recibimos informacion del LocalStorage
+    let getCartDetails
+    if (localStorage.getItem('list')) {
+      this.productos = JSON.parse(localStorage.getItem('list'));
+      if (localStorage.getItem('list')) {
+        getCartDetails = JSON.parse(localStorage.getItem('list'))
+        this.total2 = getCartDetails.reduce(function (acc, val) {
+          return acc + (val.precio * val.cantidad)
+        }, 0)
+      }
     }
   }
   getDatos() {
