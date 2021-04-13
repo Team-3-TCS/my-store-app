@@ -32,7 +32,7 @@ export class ClientComponent implements OnInit {
     ); */
     this.wishlistService.currentDataCart$.subscribe(x=>{
       if(x){
-        this.valor=x.length
+        this.total=x.length
       }
     })
     /* this.cartService.cartSubject.subscribe((data) => {

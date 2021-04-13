@@ -1,10 +1,12 @@
-<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
+<app-header-agent
+  (toggleSideBarForMe)="sideBarToggler($event)"
+></app-header-agent>
 <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
-    <app-side-bar [agent]="agent"></app-side-bar>
+    <app-sider-bar-agent [agent]="agent"></app-sider-bar-agent>
   </mat-drawer>
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
-<app-footer></app-footer>
+<app-footer-agent></app-footer-agent>

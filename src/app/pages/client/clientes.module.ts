@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ViewProductComponent } from './view-product/view-product.component';
 
 
+
 @NgModule({
   declarations: [ClientComponent, ShoppingCartComponent, PurchaseComponent, WishlistComponent, ViewProductComponent],
   imports: [CommonModule, ClientesRoutingModule, MaterialModuleModule,SharedModule],

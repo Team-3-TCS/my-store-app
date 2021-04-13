@@ -10,6 +10,9 @@ import { SplineComponent } from './widgets/spline/spline.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CardsComponent } from './widgets/cards/cards.component';
 import { PieComponent } from './widgets/pie/pie.component';
+import { FooterAgentComponent } from './components/footer-agent/footer-agent.component';
+import { HeaderAgentComponent } from './components/header-agent/header-agent.component';
+import { SiderBarAgentComponent } from './components/sider-bar-agent/sider-bar-agent.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     SplineComponent,
     CardsComponent,
     PieComponent,
+    FooterAgentComponent,
+    HeaderAgentComponent,
+    SiderBarAgentComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +40,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     SplineComponent,
     CardsComponent,
     PieComponent,
+    FooterAgentComponent,
+    HeaderAgentComponent,
+    SiderBarAgentComponent,
   ],
 })
 export class SharedModule {}
