@@ -1,4 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Producto } from 'src/app/core/models/producto.models';
+import { ProductosService } from 'src/app/core/services/productos.service';
 declare let $: any;
 @Component({
   selector: 'app-view-product',
@@ -6,13 +9,21 @@ declare let $: any;
   styleUrls: ['./view-product.component.css']
 })
 export class ViewProductComponent implements AfterViewInit, OnInit {
-  id: Number;
+  id: number;
   product;
+  prod:Producto;
   thumbimages: any[] = [];
+ 
   
-  constructor() { }
+  constructor(private productosService:ProductosService,
+    private route:ActivatedRoute) { 
+      
+    }
 
   ngOnInit(): void {
+     this.id= parseInt(this.route.snapshot.paramMap.get('id'));
+     this.prod=this.productosService.getProduct(this.id);
+     console.log(this.prod);
   }
   ngAfterViewInit(): void {
 

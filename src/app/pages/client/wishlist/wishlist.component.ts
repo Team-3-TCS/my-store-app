@@ -1,5 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -15,9 +16,10 @@ import { WishlistService } from 'src/app/core/services/wishlist.service';
 
 export class WishlistComponent implements OnInit {
   productos:Producto[]=[];
- 
+  
   constructor(private wishlistService:WishlistService,private cartService:CartService,
     private toastr: ToastrService) { 
+
     
   }
 
@@ -25,6 +27,7 @@ export class WishlistComponent implements OnInit {
    /*  this.wishlistService.currentDataCart$.subscribe(x=>{
       this.productos=x;
     }) */
+  
     this.getData();
   }
   getData(){//Recibimos informacion del LocalStorage
