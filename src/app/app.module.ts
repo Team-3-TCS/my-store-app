@@ -8,6 +8,7 @@ import { MaterialModuleModule } from './material-module/material-module.module';
 import { MensajeConfirmacionComponent } from './shared/mensaje-confirmacion/mensaje-confirmacion.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, MensajeConfirmacionComponent],
@@ -18,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     MaterialModuleModule,
     AppRoutingModule,
     FormsModule,
+    SharedModule,
     ToastrModule.forRoot()
   ],
   providers: [],

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
@@ -6,6 +6,8 @@ import { ProductosService } from 'src/app/core/services/productos.service';
 import { Producto } from 'src/app/core/models/producto.models';
 import { WishlistService } from 'src/app/core/services/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
+declare var jQuery:any;
+declare var $:any; 
 @Component({
   selector: 'app-clientes',
   templateUrl: './client.component.html',
@@ -21,7 +23,9 @@ export class ClientComponent implements OnInit {
     public productosService: ProductosService,
     public cartService: CartService,
     public wishlistService: WishlistService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private elRef: ElementRef
+    
   ) {
     /* this.total$ = this.wishlistService.currentDataCart$.pipe(
       map((products) => products.length)
@@ -41,7 +45,15 @@ export class ClientComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    
+   
+    $.getScript("./assets/js/main.js", function (data, estado) {
+      if (estado == 'success') {
+        console.log("Cargado script");
+      }
+      else {
+        alert("Error al cargar la librería autocomplete");
+      }
+    });
      this.obtenerProductos();
     this.getDatos();
     this.cartNumberFunc();
@@ -53,6 +65,7 @@ export class ClientComponent implements OnInit {
 
     }
   }
+ 
   obtenerProductos() {
       this.productos= this.productosService.getProducts();
    
