@@ -1,7 +1,10 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Producto } from 'src/app/core/models/producto.models';
+import { CartService } from 'src/app/core/services/cart.service';
 import { ProductosService } from 'src/app/core/services/productos.service';
+import { WishlistService } from 'src/app/core/services/wishlist.service';
 declare let $: any;
 @Component({
   selector: 'app-view-product',
@@ -16,7 +19,9 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
  
   
   constructor(private productosService:ProductosService,
-    private route:ActivatedRoute) { 
+    private route:ActivatedRoute,private cartService:CartService,
+    private toastr: ToastrService,
+    private wishlistService:WishlistService) { 
       
     }
 
@@ -64,5 +69,12 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
       $('#product-main-img .product-preview').zoom();
     }
   }
-  
+   addCart(producto:Producto){
+      this.cartService.changeCart(producto);
+      this.toastr.success('El producto ha sido añadido con exito!','Añadido al Carrito',{timeOut:1500})
+   }
+   addWhishlist(producto:Producto){
+          this.wishlistService.changeWishlist(producto);
+          this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
+   }
 }
