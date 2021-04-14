@@ -1,0 +1,56 @@
+mat-form-field {
+    margin: 20px;
+    width: 30%;
+    font-size: 15px;
+  }
+
+p {
+    font-size: 25px;
+    margin: 20px;
+    color:#03009e
+}
+mat-tab-group{
+    margin-left: 20px;
+    width: 100%;
+}
+
+
+table {
+    width: 100%;
+  }
+  
+
+img {
+    width: 40px;
+    border-radius: 10%;
+    margin-right: 10px;
+    border: solid gray 0.2px;
+  }
+  
+  .mat-column-select {
+    width: 7% !important;
+  }
+  
+  .mat-column-nombre {
+    width: 50% !important;
+  }
+  
+  .mat-column-precio {
+    width: 12% !important;
+  }
+  
+  .mat-column-stock {
+    width: 12% !important;
+  }
+  
+  .mat-column-acciones {
+    width: 19% !important;
+  }
+  
+  .edit {
+    color: gray;
+  }
+
+  .mat-elevation-z8{
+      margin: 10px 3% 10px 3%;
+  }
