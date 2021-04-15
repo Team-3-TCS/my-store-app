@@ -7,4 +7,7 @@ export interface Persona {
   correo?: string;
   celular?: string;
   genero?: number;
+  //profile
+  userString?: string;
+  document?:string;
 }
