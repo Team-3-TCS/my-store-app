@@ -1,0 +1,33 @@
+<div>
+    <h2 mat-dialog-title> Editar mi {{data.viewValue}} </h2>
+</div>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>{{data.viewValue}}</mat-label>
+        <div *ngIf="stringCompare('Usuario')">
+            <input matInput [(ngModel)]="data.usuario">
+        </div>
+        <div *ngIf="stringCompare('E-mail')">
+            <input matInput [(ngModel)]="data.correo">
+        </div>
+        <div *ngIf="stringCompare('Nombre')">
+            <input matInput [(ngModel)]="data.nom">
+        </div>
+        <div *ngIf="stringCompare('Apellido Paterno')">
+            <input matInput [(ngModel)]="data.apPat">
+        </div>
+        <div *ngIf="stringCompare('Apellido Materno')">
+            <input matInput [(ngModel)]="data.apMat">
+        </div>
+        <div *ngIf="stringCompare('Documento')">
+            <input matInput [(ngModel)]="data.document">
+        </div>
+        <div *ngIf="stringCompare('Telefono')">
+            <input matInput [(ngModel)]="data.celular">
+        </div>
+      </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Guardar</button>
+</div>
