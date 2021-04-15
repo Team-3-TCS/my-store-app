@@ -146,9 +146,10 @@
                         <span></span>
                         I've read and accept the <a href="#">terms & conditions</a>
                     </label>
+                    [disabled]="registerForm.invalid"
                  -->
                 </div>
-                <button routerLink="/clients" [disabled]="registerForm.invalid" type="submit"
+                <button routerLink="/clients/buy"  type="submit"
                     class="btn-outline-danger btn-sm my-2 btn-block">Comprar</button>
             </div>
             <!-- /Order Details -->
