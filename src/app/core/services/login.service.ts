@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { Persona } from '../models/persona.model';
 import { Rol } from '../models/rol.model';
 import { Usuario } from '../models/usuario.models';
@@ -12,9 +13,12 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class LoginService {
+  auth = false;
   person: Persona;
   user: Usuario;
   role: Rol;
+  authState$ = new BehaviorSubject<boolean>(this.auth);
+  userData$ = new BehaviorSubject<Object>(null)
   constructor(
     private personService: PersonService,
     private userService: UserService,
@@ -31,13 +35,22 @@ export class LoginService {
       if (this.user.contrasenia == password) {
         switch (this.role.nombre) {
           case 'ADMIN':
+            this.auth = true;
             this.router.navigateByUrl('/admin');
+            this.authState$.next(this.auth);
+            this.userData$.next(this.user);
             break;
           case 'CLIENT':
+            this.auth = true;
             this.router.navigateByUrl('/clients');
+            this.authState$.next(this.auth);
+            this.userData$.next(this.user);
             break;
           case 'AGENT':
+            this.auth = true;
             this.router.navigateByUrl('/agent');
+            this.authState$.next(this.auth);
+            this.userData$.next(this.user);
             this.agentService.setAgent(this.person, this.user);
             break;
 
@@ -50,5 +63,9 @@ export class LoginService {
     } else {
       alert('Correo o password erroneos');
     }
+  }
+  logout() {
+    this.auth = false;
+    this.authState$.next(this.auth);
   }
 }

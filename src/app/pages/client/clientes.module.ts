@@ -9,11 +9,12 @@ import { WishlistComponent} from './wishlist/wishlist.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { BuyComponent } from './buy/buy.component';
+import { ProfileClientComponent } from './profile-client/profile-client.component';
 
 
 
 @NgModule({
-  declarations: [ClientComponent, ShoppingCartComponent, PurchaseComponent, WishlistComponent, ViewProductComponent, BuyComponent],
+  declarations: [ClientComponent, ShoppingCartComponent, PurchaseComponent, WishlistComponent, ViewProductComponent, BuyComponent, ProfileClientComponent],
   imports: [CommonModule, ClientesRoutingModule, MaterialModuleModule,SharedModule],
 })
 export class ClientesModule {}
