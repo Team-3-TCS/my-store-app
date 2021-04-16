@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BuyComponent } from './buy/buy.component';
 
 import { ClientComponent } from './client.component';
+import { ProfileClientComponent } from './profile-client/profile-client.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ViewProductComponent } from './view-product/view-product.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path:'buy',
     component: BuyComponent
+  },
+  {
+    path:'profile',
+    component: ProfileClientComponent
   }
 ];
 @NgModule({

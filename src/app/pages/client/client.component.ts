@@ -45,16 +45,8 @@ export class ClientComponent implements OnInit {
 
   }
   ngOnInit(): void {
-   
-    $.getScript("./assets/js/main.js", function (data, estado) {
-      if (estado == 'success') {
-        console.log("Cargado script");
-      }
-      else {
-        alert("Error al cargar la librería autocomplete");
-      }
-    });
-     this.obtenerProductos();
+    this.getScript();
+    this.obtenerProductos();
     this.getDatos();
     this.cartNumberFunc();
     this.whishlistNumber();
@@ -90,32 +82,6 @@ export class ClientComponent implements OnInit {
       
     });
   }
- /* addCar(products:Producto) {
-    let count = 0;
-    if (localStorage.getItem('list')) {
-      let arrayList = JSON.parse(localStorage.getItem('list'));
-      for (let i in arrayList) {
-        if (products.id === arrayList[i].id) {
-          arrayList[i].cantidad += 1;
-        } else {
-          count += 1;
-        }
-      }
-      if (count === arrayList.length) {
-        arrayList.push(products);
-      } else {
-        this.valor = count;
-        this.valor -= 0;
-      }
-      localStorage.setItem('list', JSON.stringify(arrayList));
-      this.valor = arrayList.length;
-    } else {
-      let arrayList = [];
-      arrayList.push(products);
-      this.valor = arrayList.length;
-      localStorage.setItem('list', JSON.stringify(arrayList));
-    }
-  }*/
   cartNumberFunc(){
     let cartValue =JSON.parse(localStorage.getItem('list'));
     this.cartService.cart.next(cartValue);  
@@ -127,10 +93,17 @@ export class ClientComponent implements OnInit {
   public addWishlist(product:Producto)
   {
     this.wishlistService.changeWishlist(product);
-     this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
-    
+    this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
+  }
+  getScript(){
+     //Importante no borrar
+     $.getScript("./assets/js/main.js", function (data, estado) {
+      if (estado == 'success') {
+      //  console.log("Cargado script");
+      }
+      else {
+        alert("Error al cargar la librería autocomplete");
+      }
+    });
   }
 }
-/*
-
-*/ 

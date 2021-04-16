@@ -9,13 +9,17 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
   id: Number;
   product;
   thumbimages: any[] = [];
-  
+
   constructor() { }
 
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
 
+    this.getScript()
+
+  }
+  getScript() {
     // Product Main img Slick
     $('#product-main-img').slick({
       infinite: true,
@@ -53,5 +57,4 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
       $('#product-main-img .product-preview').zoom();
     }
   }
-  
 }
