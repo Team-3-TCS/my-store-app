@@ -48,8 +48,6 @@ export class WishlistService {
       listCart[objIndex].stock = 1;
       //Eliminamos el item del array del carrito
       listCart.splice(objIndex,1);
-      
-    
     }
     
     this.whish.next(listCart); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable

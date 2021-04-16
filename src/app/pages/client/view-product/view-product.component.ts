@@ -16,6 +16,8 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
   product;
   prod:Producto;
   thumbimages: any[] = [];
+  productos:Producto[]=[];
+  total:number;
  
   
   constructor(private productosService:ProductosService,
@@ -77,4 +79,7 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
           this.wishlistService.changeWishlist(producto);
           this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
    }
+  
+  
+
 }

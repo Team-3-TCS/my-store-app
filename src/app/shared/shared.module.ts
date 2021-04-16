@@ -13,6 +13,8 @@ import { PieComponent } from './widgets/pie/pie.component';
 import { FooterAgentComponent } from './components/footer-agent/footer-agent.component';
 import { HeaderAgentComponent } from './components/header-agent/header-agent.component';
 import { SiderBarAgentComponent } from './components/sider-bar-agent/sider-bar-agent.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { CategoriasPipe } from './pipes/categorias.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { SiderBarAgentComponent } from './components/sider-bar-agent/sider-bar-a
     FooterAgentComponent,
     HeaderAgentComponent,
     SiderBarAgentComponent,
+    SearchPipe,
+    CategoriasPipe,
   ],
   imports: [
     CommonModule,
@@ -43,6 +47,8 @@ import { SiderBarAgentComponent } from './components/sider-bar-agent/sider-bar-a
     FooterAgentComponent,
     HeaderAgentComponent,
     SiderBarAgentComponent,
+    SearchPipe,
+    CategoriasPipe
   ],
 })
 export class SharedModule {}

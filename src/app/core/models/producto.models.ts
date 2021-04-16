@@ -1,6 +1,7 @@
 export interface Producto {
   id?: number;
   idCategoria?: number;
+  categoria?: string;
   idVendedor?: number;
   nombre?: string;
   descripcion: string;

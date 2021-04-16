@@ -1,4 +1,7 @@
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 import { Producto } from 'src/app/core/models/producto.models';
 import { CartService } from 'src/app/core/services/cart.service';
 import { WishlistService } from 'src/app/core/services/wishlist.service';
@@ -13,6 +16,8 @@ export class HeaderComponent implements OnInit {
     total:number=0;
     total2:number=0;
     productos:Producto[]=[];
+    search= new FormControl('');
+    @Output('search') searchEmitter =new EventEmitter<string>();
   constructor(private cartService:CartService, private wishlistService:WishlistService) {
     this.wishlistService.currentDataCart$.subscribe(x=>{
       if(x){
@@ -29,7 +34,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe(valor=> this.searchEmitter.emit(valor));
     this.getData();
   }
   getData(){//Recibimos informacion del LocalStorage

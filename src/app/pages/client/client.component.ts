@@ -1,11 +1,13 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ignoreElements, map } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductosService } from 'src/app/core/services/productos.service';
 import { Producto } from 'src/app/core/models/producto.models';
 import { WishlistService } from 'src/app/core/services/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
+
+import { ThrowStmt } from '@angular/compiler';
 declare var jQuery:any;
 declare var $:any; 
 @Component({
@@ -19,6 +21,13 @@ export class ClientComponent implements OnInit {
   productos: Producto[] = [];
   cart:Producto[]=[];
   valor: number = 0;
+  filtro_valor= '';
+  flag=false;
+  categoria_valor:number;
+  presionado:boolean;
+  categorias:any[]=[{id:1,nombre:'LAPTOPS'},{id:2,nombre:'SMARTPHONES'},{id:3,nombre:'CAMERAS'}];
+  productoSel:any[];
+   arreglo1:any[];
   constructor(
     public productosService: ProductosService,
     public cartService: CartService,
@@ -46,6 +55,7 @@ export class ClientComponent implements OnInit {
   }
   ngOnInit(): void {
    
+    
     $.getScript("./assets/js/main.js", function (data, estado) {
       if (estado == 'success') {
         console.log("Cargado script");
@@ -58,6 +68,7 @@ export class ClientComponent implements OnInit {
     this.getDatos();
     this.cartNumberFunc();
     this.whishlistNumber();
+    
     if (localStorage.getItem('list') === null) {
       this.cart = JSON.parse(localStorage.getItem('list'));
     } else {
@@ -125,11 +136,72 @@ export class ClientComponent implements OnInit {
     this.wishlistService.whish.next(whishlistValue);  
   }
   public addWishlist(product:Producto)
-  {
-    this.wishlistService.changeWishlist(product);
-     this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
+  {    
     
+      if(!this.productoSel)
+      this.productoSel=[];
+      if(this.productoSel.includes(product))
+      {
+       this.productoSel.splice(this.productoSel.indexOf(product),1);
+       this.wishlistService.removeElementWhishlist(product);
+       localStorage.setItem('listaCorazones',JSON.stringify(this.productoSel));
+       this.toastr.success('El producto ha sido removido con exito!','Añadido al Whishlist',{timeOut:1500})
+      }
+      else
+      { 
+        this.productoSel.push(product);
+        this.wishlistService.changeWishlist(product);
+        localStorage.setItem('listaCorazones',JSON.stringify(this.productoSel));
+        this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500});
+      }
   }
+  handleSearch(value:string){
+     this.filtro_valor=value;
+     console.log(this.filtro_valor);
+  }
+   onChange(valor){
+    let categoria:String;
+     
+    /*  this.presionado=valor.target.checked;
+     if(!this.presionado){
+       this.categoria_valor=0;
+     }
+     else{
+      this.categoria_valor=valor.target.value;
+      console.log(this.categoria_valor);
+     } */
+    
+  /*    if(!arreglo1){
+       this.productos=this.productosService.getProducts();
+
+     }
+     if(arreglo1.includes(categoria)){
+       arreglo1.splice(arreglo1.indexOf(categoria),1);
+       
+        arreglo2= this.productos.filter(prod=>prod.categoria.toUpperCase().includes(arreglo1));  
+      arreglo1.forEach((prod:string)=> this.productos.filter(o=>categoria.toUpperCase().includes(prod)));                                 
+     } */
+     let ga='Lavadora LG';
+     let m=valor.target.value;
+     
+     if(!this.arreglo1){
+      /* this.productos=this.productosService.getProducts(); */
+          this.arreglo1=[];
+          
+    }
+    if(this.arreglo1.includes(m)){
+      this.arreglo1.splice(this.arreglo1.indexOf(m),1);
+        console.log(this.arreglo1);
+       /* = this.productos.filter(prod=>prod.categoria.toUpperCase().includes(arreglo1));   */
+     /* arreglo1.forEach((prod:string)=> this.productos.filter(o=>categoria.toUpperCase().includes(prod)));   */         
+         this.productos=this.productosService.getProducts();                     
+    }
+    else{
+         this.arreglo1.push(m);
+         console.log(m);
+         this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase())); 
+    }
+   }
 }
 /*
 

@@ -40,7 +40,7 @@
 								<option value="1">Category 01</option>
 								<option value="1">Category 02</option>
 							</select>
-							<input class="input" placeholder="Search here">
+							<input [formControl]="search"class="input" placeholder="Search here">
 							<button class="search-btn">Search</button>
 						</form>
 					</div>
@@ -121,3 +121,26 @@
 	</div>
 	<!-- /MAIN HEADER -->
 </header>
+<!-- NAVIGATION -->
+<nav id="navigation">
+	<!-- container -->
+	<div class="container">
+	  <!-- responsive-nav -->
+	  <div id="responsive-nav">
+		<!-- NAV -->
+		<ul class="main-nav nav navbar-nav">
+		  <li class="active"><a routerLink="/home">Home</a></li>
+		  <li><a href="#">Hot Deals</a></li>
+		  <li><a routerLink="/clients">Categories</a></li>
+		  <li><a href="#">Laptops</a></li>
+		  <li><a href="#">Smartphones</a></li>
+		  <li><a href="#">Cameras</a></li>
+		  <li><a href="#">Accessories</a></li>
+		</ul>
+		<!-- /NAV -->
+	  </div>
+	  <!-- /responsive-nav -->
+	</div>
+	<!-- /container -->
+  </nav>
+  <!-- /NAVIGATION -->

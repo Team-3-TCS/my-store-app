@@ -4,6 +4,7 @@ export const product: Producto[] = [
   {
     id: 1,
     idCategoria: 1,
+    categoria:'LAPTOPS',
     nombre: 'LAPTOP OMEN 17',
     descripcion: '16GB 1T SSD',
     precio: 8499,
@@ -15,6 +16,7 @@ export const product: Producto[] = [
   {
     id: 2,
     idCategoria: 2,
+    categoria:'LAPTOPS',
     nombre: 'TV LG',
     descripcion: '55"',
     precio: 2599,
@@ -26,6 +28,7 @@ export const product: Producto[] = [
   {
     id: 3,
     idCategoria: 3,
+    categoria:'LAPTOPS',
     nombre: 'Play Station 2',
     descripcion: 'Consola de PS4 Pro 1TB Negro',
     precio: 2299,
