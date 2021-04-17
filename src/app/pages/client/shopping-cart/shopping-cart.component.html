@@ -1,9 +1,21 @@
 <app-header></app-header>
-
-
+<div class="container">
+  <div *ngIf="productos.length === 0;" class="text-center my-5">
+    <div class="col-md-12">   
+        <div class="card-body cart">
+          <div class="col-sm-12 empty-cart-cls text-center"> <img src="https://letrasrecortadas.com/carritoVacio.png" width="400"
+              height="400" class="img-fluid mb-4 mr-3">
+            <h3><strong>Tu carrito esta vacio</strong></h3>
+            <h4>Add something to make me happy :)</h4> 
+          </div>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-lg mt-3" routerLink="/clients">Seguir comprando</button>
+  </div>
+  </div>
 <div class="container my-5">
   <!--When the cart has some items -->
-  <ng-container>
+  <ng-container *ngIf="productos.length !== 0">
     <div class="row">
       <div class="col-md-12 ">
         <div class="table-responsive">
