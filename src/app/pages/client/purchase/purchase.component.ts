@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
-  styleUrls: ['./purchase.component.scss']
+  styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
   productos: Producto[];
@@ -25,8 +25,8 @@ export class PurchaseComponent implements OnInit {
       firstname: ['', [Validators.required]],
       lastname: ['', [Validators.required]],
       dni: ['', [Validators.required, Validators.pattern(/[0-9]{8}$/),Validators.maxLength(8)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/[0-9]{9}$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{3,}))$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/[0-9]{9}$/),Validators.maxLength(9)]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
     });
