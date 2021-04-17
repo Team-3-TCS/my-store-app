@@ -1,118 +1,91 @@
 <app-header></app-header>
+
 <div class="container">
-  <div *ngIf="productos.length === 0" class="text-center my-5">
-    <div class="col-md-12">
-      <div class="card-body cart">
-        <div class="col-sm-12 empty-cart-cls text-center">
-          <img
-            src="https://letrasrecortadas.com/carritoVacio.png"
-            width="400"
-            height="400"
-            class="img-fluid mb-4 mr-3"
-          />
-          <h3><strong>Tu carrito esta vacio</strong></h3>
-          <h4>Add something to make me happy :)</h4>
+  <div *ngIf="productos.length === 0;" class="text-center my-5">
+    <div class="col-md-12">   
+        <div class="card-body cart">
+          <div class="col-sm-12 empty-cart-cls text-center"> <img src="https://letrasrecortadas.com/carritoVacio.png" width="400"
+              height="400" class="img-fluid mb-4 mr-3">
+            <h3><strong>Tu carrito esta vacio</strong></h3>
+            <h4>Add something to make me happy :)</h4> 
+          </div>
         </div>
-      </div>
     </div>
-    <button class="btn btn-primary btn-lg mt-3" routerLink="/clients">
-      Seguir comprando
-    </button>
+    <button class="btn btn-primary btn-lg mt-3" routerLink="/clients">Seguir comprando</button>
   </div>
-</div>
+  </div>
 <div class="container my-5">
   <!--When the cart has some items -->
   <ng-container *ngIf="productos.length !== 0">
     <div class="row">
-      <div class="col my-4">
-        <table class="table">
-          <thead class="table-dark">
-            <tr class="text-center">
-              <th>Image</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let products of productos; let i = index">
-              <td class="d-flex align-items-center justify-content-around">
-                <img
-                  [src]="products?.imagen[0]"
-                  alt="{products.name}}"
-                  height="60"
-                  class="order-1"
-                />
-                <span class="text-danger" style="cursor: pointer"
-                  ><i
-                    class="fa fa-trash"
-                    (click)="delete(products, productos)"
-                  ></i
-                ></span>
-              </td>
-              <td>
-                <p>{{ products?.nombre }}</p>
-              </td>
-              <td>
-                <p>{{ products?.precio | currency }}</p>
-              </td>
-              <td>
-                <form>
-                  <div
-                    class="value-button"
-                    id="decrease"
-                    (click)="diminish(products)"
-                  >
-                    <i class="fa fa-minus"></i>
-                  </div>
-                  <input
-                    type="number"
-                    id="number"
-                    value="{{ products?.cantidad }}"
-                    readonly
-                    max="{{ products?.cantidad }}"
-                  />
-                  <div
-                    class="value-button"
-                    id="increase"
-                    (click)="increase(products)"
-                  >
-                    <i class="fa fa-plus"></i>
-                  </div>
-                </form>
-              </td>
-              <td>
-                <h2>{{ products.cantidad * products.precio | currency }}</h2>
-              </td>
-            </tr>
-            <tr class="border-0">
-              <td style="border: none"></td>
-              <td style="border: none"></td>
-              <td style="border: none"></td>
-              <td>TOTAL</td>
-              <td>{{ total | currency }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-md-12 ">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="table-dark">
+              <tr class="text-center">
+                <th>Producto</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let products of productos; let i=index">
+                <td class="d-flex align-items-center justify-content-around " style="width: 15%;">
+                  <span class="text-danger" style="cursor: pointer;"><i class="fa fa-trash"
+                      (click)="delete(products,productos)"></i></span>
+                  <img src="{{products?.imagen}}" alt="{{products.name}}" height="60" style="margin-left: 10px;">
+
+                </td>
+                <td>
+                  <p>{{products?.nombre}}</p>
+                </td>
+                <td>
+                  <p>{{products?.precio| currency}}</p>
+                </td>
+                <td>
+                  <form style="width: 100%;">
+                    <div class="value-button" id="decrease" (click)="diminish(products)">
+                      <i class="fa fa-minus"></i>
+                    </div>
+                    <input type="number" id="number" value="{{products?.cantidad}}" readonly
+                      max="{{products?.cantidad}}" />
+                    <div class="value-button" id="increase" (click)="increase(products)">
+                      <i class="fa fa-plus"></i>
+                    </div>
+                  </form>
+                </td>
+                <td>
+                  <p>{{products.cantidad*products.precio|currency}}</p>
+                </td>
+              </tr>
+              <tr class="border-0">
+                <td style="border: none;"></td>
+                <td></td>
+                <td></td>
+                <td>TOTAL</td>
+                <td>{{total|currency}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div class="container-fluid">
-      <div class="row mb-5 my-5">
+      <div class="row mb-5 my-5" >
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-9">
-          <a routerLink="/clients" class="btn btn-success btn-sm order-0"
-            ><i class="fa fa-arrow-circle-left"></i> Continue Shopping</a
-          >
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
-          <a
-            routerLink="/clients/purchase"
-            class="btn btn-danger btn-sm order-1"
-            >Checkout <i class="fa fa-arrow-circle-right"></i
-          ></a>
+          
+              <a routerLink="/clients" class="btn btn-success btn-sm order-0"><i class="fa fa-arrow-circle-left"></i> Continue
+                Shopping</a>
+              </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+            <a routerLink="/clients/purchase" class="btn btn-danger btn-sm order-1">Checkout <i
+              class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
     </div>
+    
   </ng-container>
 </div>
 <app-footer></app-footer>
