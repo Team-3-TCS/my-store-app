@@ -867,11 +867,13 @@ textarea.input {
 }
 
 .product .product-img {
-  position: relative;
+  position:relative;
+  
 }
 
 .product .product-img>img {
   width: 100%;
+  
 }
 
 .product .product-img .product-label {

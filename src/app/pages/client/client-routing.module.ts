@@ -26,7 +26,7 @@ const routes: Routes = [
     component: WishlistComponent
   },
   {
-    path:'viewproduct',
+    path:'viewproduct/:id',
     component: ViewProductComponent
   },
   {

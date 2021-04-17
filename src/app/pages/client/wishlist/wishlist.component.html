@@ -19,7 +19,7 @@
                                 <tr *ngFor="let producto of productos">
                                     <td >
                                         <div class="img">
-                                            <a href="#"><img [src]="producto.imagen" alt="Image"></a>
+                                            <a href="#"><img [src]="producto.imagen[0]" alt="Image"></a>
                                             <p>{{producto.nombre}}</p>
                                         </div>
                                     </td>

@@ -11,4 +11,13 @@ export class ProductosService {
   getProducts() {
     return this.datos;
   }
+  getProduct(id:number){
+    let producto;
+    this.datos.forEach(prod=>{
+        if(prod.id==id){
+              producto=prod;
+        }
+    })
+   return producto;
+  }
 }
