@@ -6,7 +6,7 @@ export interface Producto {
   nombre?: string;
   descripcion: string;
   precio: number;
-  imagen?: string;
+  imagen?: string[];
   stock: number;
   estadoActivacion?: boolean;
   fechaEdicion?: string;

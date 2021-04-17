@@ -33,8 +33,8 @@
           <h3 class="aside-title">Categories</h3>
           <div class="checkbox-filter">
             <div *ngFor="let categoria of categorias"class="input-checkbox">
-              <input type="checkbox" id="{{categoria.id}}" (change)="onChange($event)" value="Lavadora LG"/>
-              <label for="{{categoria.id}}">
+              <input type="checkbox" id="{{categoria.idCategoria}}" (change)="onChange($event)" value="{{categoria.nombre}}"/>
+              <label for="{{categoria.idCategoria}}">
                 <span></span>
                 {{categoria.nombre}}
                 <small>(120)</small>
@@ -253,7 +253,7 @@
           <div  class="col-md-4 col-xs-6" *ngFor="let products of productos | categorias:categoria_valor |search:filtro_valor">
             <div class="product">
               <div class="product-img">
-                <img src="{{ products.imagen }}" alt="" />
+                <img src="{{ products.imagen[0]}}" alt="" />
               </div>
               <div class="product-body">
                 <p class="product-category">{{ products.nombre }}</p>
@@ -261,10 +261,10 @@
                   <a href="#">{{ products.descripcion}}</a>
                 </h3>
                 <h4 class="product-price">
-                  {{ products.precio | currency:'GBP' }}
+                  {{ products.precio | currency:'USD' }}
                   <del class="product-old-price">$990.00</del>
                 </h4>
-                <div class="product-rating"></div>
+                <!-- <div class="product-rating"></div> -->
                 <div class="product-btns">
                   <button
                     (click)="addWishlist(products)"

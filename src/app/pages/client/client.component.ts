@@ -8,6 +8,9 @@ import { WishlistService } from 'src/app/core/services/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 
 import { ThrowStmt } from '@angular/compiler';
+import { categoria } from 'src/app/core/models/categoria.models';
+import { categories } from 'src/app/mock/category.mock';
+
 declare var jQuery:any;
 declare var $:any; 
 @Component({
@@ -25,9 +28,11 @@ export class ClientComponent implements OnInit {
   flag=false;
   categoria_valor:number;
   presionado:boolean;
-  categorias:any[]=[{id:1,nombre:'LAPTOPS'},{id:2,nombre:'SMARTPHONES'},{id:3,nombre:'CAMERAS'}];
+  categorias:categoria[]=categories;
   productoSel:any[];
    arreglo1:any[];
+   categoria:any[];
+   arreglo2:any[]=[];
   constructor(
     public productosService: ProductosService,
     public cartService: CartService,
@@ -145,14 +150,14 @@ export class ClientComponent implements OnInit {
        this.productoSel.splice(this.productoSel.indexOf(product),1);
        this.wishlistService.removeElementWhishlist(product);
        localStorage.setItem('listaCorazones',JSON.stringify(this.productoSel));
-       this.toastr.success('El producto ha sido removido con exito!','Añadido al Whishlist',{timeOut:1500})
+       this.toastr.success(product.nombre,'Removido del Whishlist',{timeOut:1500})
       }
       else
       { 
         this.productoSel.push(product);
         this.wishlistService.changeWishlist(product);
         localStorage.setItem('listaCorazones',JSON.stringify(this.productoSel));
-        this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500});
+        this.toastr.success(product.nombre,'Añadido al Whishlist',{timeOut:1500});
       }
   }
   handleSearch(value:string){
@@ -160,7 +165,8 @@ export class ClientComponent implements OnInit {
      console.log(this.filtro_valor);
   }
    onChange(valor){
-    let categoria:String;
+    let categoria=[];
+     let i;
      
     /*  this.presionado=valor.target.checked;
      if(!this.presionado){
@@ -188,18 +194,45 @@ export class ClientComponent implements OnInit {
       /* this.productos=this.productosService.getProducts(); */
           this.arreglo1=[];
           
+        
+          
     }
     if(this.arreglo1.includes(m)){
       this.arreglo1.splice(this.arreglo1.indexOf(m),1);
         console.log(this.arreglo1);
        /* = this.productos.filter(prod=>prod.categoria.toUpperCase().includes(arreglo1));   */
      /* arreglo1.forEach((prod:string)=> this.productos.filter(o=>categoria.toUpperCase().includes(prod)));   */         
-         this.productos=this.productosService.getProducts();                     
+         this.productos=this.productosService.getProducts(); 
+                   
     }
     else{
-         this.arreglo1.push(m);
-         console.log(m);
-         this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase())); 
+            this.arreglo1.push(m.toUpperCase());
+            /* console.log(this.arreglo1); */
+             console.log(m);
+             this.productos=this.productos.filter(prod=>prod.categoria.toUpperCase().includes(m.toUpperCase()));
+             console.log(this.productos);
+            /* this.arreglo2.push(...this.productos.filter(prod=>prod.categoria.toUpperCase().includes(m.toUpperCase())))
+             console.log(this.arreglo2);  */
+            /*  this.productos=this.arreglo1; */
+             
+          
+            /* this.productos=this.arreglo1 */
+                   /* this.arreglo1.forEach((prod:string)=> categoria.push(prod));
+                  console.log(categoria);  */
+                 /* this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase()))
+                 console.log(this.productos) */
+                    /* this.arreglo1.forEach((prod:string)=>categoria.push(...this.productos.filter(o=>o.nombre.toUpperCase().includes(prod.toUpperCase()))));
+                       this.productos=categoria; */
+                      
+                     
+                  /*   this.arreglo1.forEach((prod:string)=>this.productos=this.productos.filter(o=>o.nombre.toUpperCase().includes(prod.toUpperCase()))); */
+         
+   /*       this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase())); */
+                /* for (let i in this.arreglo1) {
+                     this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(this.arreglo1[i].toUpperCase()))
+                     console.log(this.productos)
+                } */
+        
     }
    }
 }

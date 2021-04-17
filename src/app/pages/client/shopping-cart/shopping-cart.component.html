@@ -29,7 +29,7 @@
           <tbody>
             <tr *ngFor="let products of productos; let i=index">
               <td class="d-flex align-items-center justify-content-around">
-                <img src="{{products?.imagen}}" alt="{products.name}}" height="60" class="order-1">
+                <img [src]="products?.imagen[0]" alt="{products.name}}" height="60" class="order-1">
                 <span class="text-danger" style="cursor: pointer;"><i class="fa fa-trash"
                     (click)="delete(products,productos)"></i></span>
               </td>
