@@ -9,31 +9,33 @@ declare let $: any;
 @Component({
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
-  styleUrls: ['./view-product.component.css']
+  styleUrls: ['./view-product.component.css'],
 })
 export class ViewProductComponent implements AfterViewInit, OnInit {
   id: number;
   product;
-  prod:Producto;
+  prod: Producto;
   thumbimages: any[] = [];
-  productos:Producto[]=[];
-  total:number;
- 
-  
-  constructor(private productosService:ProductosService,
-    private route:ActivatedRoute,private cartService:CartService,
+  productos: Producto[] = [];
+  total: number;
+
+  constructor(
+    private productosService: ProductosService,
+    private route: ActivatedRoute,
+    private cartService: CartService,
     private toastr: ToastrService,
-    private wishlistService:WishlistService) { 
-      
-    }
+    private wishlistService: WishlistService
+  ) {}
 
   ngOnInit(): void {
-     this.id= parseInt(this.route.snapshot.paramMap.get('id'));
-     this.prod=this.productosService.getProduct(this.id);
-     console.log(this.prod);
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.prod = this.productosService.getProduct(this.id);
+    console.log(this.prod);
   }
   ngAfterViewInit(): void {
-
+    this.getScript();
+  }
+  getScript() {
     // Product Main img Slick
     $('#product-main-img').slick({
       infinite: true,
@@ -54,15 +56,16 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
       centerPadding: 0,
       vertical: true,
       asNavFor: '#product-main-img',
-      responsive: [{
-        breakpoint: 991,
-        settings: {
-          vertical: false,
-          arrows: false,
-          dots: true,
-        }
-      },
-      ]
+      responsive: [
+        {
+          breakpoint: 991,
+          settings: {
+            vertical: false,
+            arrows: false,
+            dots: true,
+          },
+        },
+      ],
     });
 
     // Product img zoom
@@ -71,15 +74,20 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
       $('#product-main-img .product-preview').zoom();
     }
   }
-   addCart(producto:Producto){
-      this.cartService.changeCart(producto);
-      this.toastr.success('El producto ha sido añadido con exito!','Añadido al Carrito',{timeOut:1500})
-   }
-   addWhishlist(producto:Producto){
-          this.wishlistService.changeWishlist(producto);
-          this.toastr.success('El producto ha sido añadido con exito!','Añadido al Whishlist',{timeOut:1500})
-   }
-  
-  
-
+  addCart(producto: Producto) {
+    this.cartService.changeCart(producto);
+    this.toastr.success(
+      'El producto ha sido añadido con exito!',
+      'Añadido al Carrito',
+      { timeOut: 1500 }
+    );
+  }
+  addWhishlist(producto: Producto) {
+    this.wishlistService.changeWishlist(producto);
+    this.toastr.success(
+      'El producto ha sido añadido con exito!',
+      'Añadido al Whishlist',
+      { timeOut: 1500 }
+    );
+  }
 }

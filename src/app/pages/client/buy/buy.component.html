@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h1 class="display-3">Gracias!</h1>
+                <p class="lead"><strong>Compra realizada </strong> revisa tu email</p>
+                <hr>
+                <p>
+                <p>Código de orden : <strong>0001</strong></p>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Titulo</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of productos">
+                        <td>
+                            <img src="{{p.imagen}}" alt="{{p.nombre}}" class="img-thumbnail" width="60px">
+                        </td>
+                        <td>
+                            <li>{{p.nombre}}</li>
+                            <li>{{p.descripcion}}</li>
+                        </td>
+                        <td>{{p.precio | currency:'USD'}}</td>
+                        <td style="padding-left:30px">{{p.cantidad}}</td>
+                    </tr>
+
+                    <tr class="border-0">
+                        <td style="border: none;"></td>
+                        <td></td>
+                        <td><h3>TOTAL</h3></td>
+                        <td>{{total | currency:'USD'}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

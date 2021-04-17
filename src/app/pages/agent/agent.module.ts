@@ -12,6 +12,7 @@ import { ProductsAgentComponent } from './products-agent/products-agent.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrdersAgentComponent } from './orders-agent/orders-agent.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ProfileComponent, ProfileDialog } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { ReportsComponent } from './reports/reports.component';
     OrdersAgentComponent,
     DashboardComponent,
     ReportsComponent,
+    ProfileComponent,
+    ProfileDialog,
   ],
   imports: [
     CommonModule,

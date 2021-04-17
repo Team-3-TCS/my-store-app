@@ -1,0 +1,67 @@
+.container-profile{
+    margin-top: 55px;
+    padding: 0 60px;
+}
+.container{
+    width: 100%;
+    height: 1000px;
+    padding:0px
+}
+.container-inner{
+    margin-left: 190px;
+    margin-right: 190px;
+    padding: 20px;
+}
+.card-title{
+    margin-bottom: 30px;
+}
+.card-item{
+    padding-left:18px;
+    padding-right: 18px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.mat-card{
+    padding-top: 0px ;
+    padding-bottom: 0px;
+}
+.card-item-title{
+    padding: 0px 20px;
+    width: 250px;
+    margin-right: 0px;
+    display: flex;
+}
+
+.card-item-value{
+    width: 300px;
+    padding-left: 50px;
+    
+}
+
+.card-item-button{
+    width: 191px;
+    padding-left: 20px;
+    justify-content: right;
+    text-align: end;
+}
+.span{
+    display: flex;
+}
+
+.button{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: none;
+    padding-top:6px;
+}
+.mat-icon{
+    margin:auto;
+    text-align: center;
+    display:flex;
+}

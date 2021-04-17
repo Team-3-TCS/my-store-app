@@ -8,6 +8,7 @@ import { EditProductComponent } from './products-agent/new-product/edit-product.
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrdersAgentComponent } from './orders-agent/orders-agent.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: 'reports',
         component: ReportsComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
     ],
   },

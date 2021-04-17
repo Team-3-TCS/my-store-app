@@ -1,8 +1,7 @@
-
 <app-header></app-header>
 <ngx-spinner bdColor="rgba(151,149,149,0.4)" size="large" color="orange" type="ball-clip-rotate-pulse"
     fullScreen="true">
-    <p style="font-size: 20px; color: black">Booking Order...</p>
+    <p style="font-size: 20px; color: black">Cargando orden...</p>
 </ngx-spinner>
 <div class="section">
     <!-- container -->
@@ -13,63 +12,124 @@
                 <!-- Billing Details -->
                 <div class="billing-details">
                     <div class="section-title">
-                        <h1 class="title">Facturacion</h1>
+                        <h3 class="title">Facturacion</h3>
                     </div>
                     <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-                        <label>Nombres</label>
-                        <input type="text" formControlName="firstname" class="form-control"
-                            [ngClass]="{ 'is-invalid':  form.firstname.errors }" placeholder="Nombres" />
-                        <div *ngIf="form.firstname.errors" class="invalid-feedback">
-                            <div *ngIf="form.firstname.errors.required&&form.lastname.touched">El nombre es obligatorio
+                        <div class="form-group position-relative">
+                            <label>Nombres</label>
+                            <input type="text" formControlName="firstname" class="form-control "
+                                [ngClass]="{ 'is-invalid': form.firstname.errors ,'is-valid':form.firstname.valid}"
+                                placeholder="Nombres">
+                            <div class="valid-feedback feedback-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="invalid-feedback feedback-icon">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="form.firstname.errors" class="invalid-feedback">
+                                <div *ngIf="form.firstname.errors.required||form.firstname.touched">El nombre es
+                                    obligatorio
+                                </div>
                             </div>
                         </div>
-                        <label>Apellidos</label>
-                        <input type="text" formControlName="lastname" class="form-control"
-                            [ngClass]="{ 'is-invalid':  form.lastname.errors }" placeholder="Apellidos" />
-                        <div *ngIf="form.lastname.errors" class="invalid-feedback">
-                            <div *ngIf="form.lastname.errors.required&&form.lastname.touched">Los apellidos son
-                                obligatorios</div>
+                        <div class="form-group position-relative">
+                            <label>Apellidos</label>
+                            <input type="text" formControlName="lastname" class="form-control"
+                                [ngClass]="{ 'is-invalid': form.lastname.errors ,'is-valid':form.lastname.valid}"
+                                placeholder="Apellidos" />
+                            <div class="valid-feedback feedback-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="invalid-feedback feedback-icon">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="form.lastname.errors" class="invalid-feedback">
+                                <div *ngIf="form.lastname.errors.required||form.lastname.touched">Los apellidos son
+                                    obligatorios</div>
+                            </div>
                         </div>
-                        <label>DNI</label>
-                        <input type="text" formControlName="dni" class="form-control"
-                            [ngClass]="{ 'is-invalid':  form.dni.errors }" placeholder="DNI" />
-                        <div *ngIf="form.dni.errors" class="invalid-feedback">
-                            <div *ngIf="form.dni.errors.required&&form.lastname.touched">El DNI es obligatorio</div>
-                            <div *ngIf="form.dni.errors.pattern||form.dni.errors.maxlength">El DNI debe contar con 8
-                                digitos</div>
+                        <div class="form-group position-relative">
+                            <label>DNI</label>
+                            <input type="text" formControlName="dni" class="form-control"
+                                [ngClass]="{ 'is-invalid': form.dni.errors ,'is-valid':form.dni.valid}"
+                                placeholder="DNI" />
+                            <div class="valid-feedback feedback-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="invalid-feedback feedback-icon">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="form.dni.errors" class="invalid-feedback">
+                                <div *ngIf="form.dni.errors.required||form.dni.touched">El DNI es obligatorio</div>
+                                <div *ngIf="form.dni.errors.pattern||form.dni.errors.maxlength">El DNI debe contar con 8
+                                    digitos</div>
+                            </div>
                         </div>
-                        <label>Email</label>
-                        <input type="text" formControlName="email" class="form-control"
-                            [ngClass]="{ 'is-invalid': form.email.errors }" placeholder="Correo electronico" />
-                        <div *ngIf="form.email.errors" class="invalid-feedback">
-                            <div *ngIf="form.email.errors.required&&form.lastname.touched">El email es obligatorio</div>
-                            <div *ngIf="form.email.errors.email">El email debe de ser válido</div>
+                        <div class="form-group position-relative">
+                            <label>Email</label>
+                            <input type="text" formControlName="email" class="form-control"
+                                [ngClass]="{ 'is-invalid': form.email.errors,'is-valid':form.email.valid}"
+                                placeholder="Correo electronico" />
+                            <div class="valid-feedback feedback-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="invalid-feedback feedback-icon">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="form.email.errors" class="invalid-feedback">
+                                <div *ngIf="form.email.errors.required||form.email.touched">El email es obligatorio
+                                </div>
+                                <div *ngIf="form.email.errors.pattern">Email no es valido</div>
+                            </div>
                         </div>
-                        <label>Celular</label>
-                        <input type="tel" formControlName="phone" class="form-control"
-                            [ngClass]="{ 'is-invalid':  form.phone.errors}" placeholder="Celular" />
-                        <div *ngIf="form.phone.errors" class="invalid-feedback">
-                            <div *ngIf="form.phone.errors.required&&form.phone.touched">El numero de celular es
-                                obligatorio</div>
-                            <div *ngIf="form.phone.errors.pattern">El numero de celular debe contar con 9 digitos</div>
+                        <div class="form-group position-relative">
+                            <label>Celular</label>
+                            <input type="tel" formControlName="phone" class="form-control"
+                                [ngClass]="{ 'is-invalid': form.phone.errors ,'is-valid':form.phone.valid}"
+                                placeholder="Celular" />
+                            <div class="valid-feedback feedback-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="invalid-feedback feedback-icon">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="form.phone.errors" class="invalid-feedback">
+                                <div *ngIf="form.phone.errors.required||form.phone.touched">El numero de celular es
+                                    obligatorio</div>
+                                <div *ngIf="form.phone.errors.pattern||form.phone.errors.maxlength">El numero de celular
+                                    debe contar con 9 digitos
+                                </div>
+                            </div>
                         </div>
-                        <label>direccion</label>
-                        <input type="text" formControlName="address" class="form-control"
-                            [ngClass]="{ 'is-invalid':  form.address.errors }" placeholder="Direccion" />
-                        <div *ngIf="form.address.errors" class="invalid-feedback">
-                            <div *ngIf="form.address.errors.required&&form.lastname.touched">La direccion eses
-                                obligatorio</div>
+                        <div class="form-group position-relative">
+                            <label>Direccion</label>
+                            <input type="text" formControlName="address" class="form-control"
+                                [ngClass]="{ 'is-invalid': form.address.errors ,'is-valid':form.address.valid}"
+                                placeholder="Direccion">
+                            <div class="valid-feedback feedback-icon">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="invalid-feedback feedback-icon">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="form.address.errors" class="invalid-feedback ">
+                                <div *ngIf="form.address.errors.required||form.address.touched">La direccion es
+                                    obligatoria</div>
+                            </div>
                         </div>
-                        <label>ciudad</label>
-                        <select class="form-select" type="select" formControlName="city"
-                            [ngClass]="{ 'is-invalid':  form.city.errors }">
-                            <option value="">Ciudad</option>
-                            <option *ngFor="let city of departamento" [ngValue]="city">
-                                {{city}}
-                            </option>
-                        </select>
-                        <div *ngIf="form.city.errors" class="invalid-feedback">
-                            <div *ngIf="form.city.errors.required&&form.lastname.touched">La ciudad es obligatoria</div>
+                        <div class="form-group position-relative">
+                            <label>Ciudad</label>
+                            <select class="form-select" type="select" formControlName="city" class="form-control"
+                                [ngClass]="{ 'is-invalid': form.city.errors ,'is-valid':form.city.valid}">
+                                <option value="">Ciudad</option>
+                                <option *ngFor="let city of departamento" [ngValue]="city">
+                                    {{city}}
+                                </option>
+                            </select>
+                            <div *ngIf="form.city.errors" class="invalid-feedback">
+                                <div *ngIf="form.city.errors.required||form.city.touched">La ciudad es obligatoria
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -146,10 +206,11 @@
                         <span></span>
                         I've read and accept the <a href="#">terms & conditions</a>
                     </label>
+                    [disabled]="registerForm.invalid"
                  -->
                 </div>
-                <button routerLink="/clients" [disabled]="registerForm.invalid" type="submit"
-                    class="btn-outline-danger btn-sm my-2 btn-block">Comprar</button>
+                <button routerLink="/clients/buy" type="submit" class="btn-outline-danger btn-sm my-2 btn-block"
+                    [disabled]="registerForm.invalid">Finalizar</button>
             </div>
             <!-- /Order Details -->
         </div>
