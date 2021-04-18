@@ -48,7 +48,7 @@
     <ng-container matColumnDef="nombre">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>PRODUCTO</th>
       <td mat-cell *matCellDef="let row">
-        <img src="{{ row.imagen }}" alt="" /> {{ row.nombre }}
+        <img src="{{ row.imagen[0] }}" alt="" /> {{ row.nombre }}
       </td>
     </ng-container>
 
