@@ -8,7 +8,7 @@ export interface Producto {
   precio: number;
   imagen?: string[];
   stock: number;
-  estadoActivacion?: boolean;
+  estado_activacion?: boolean;
   fechaEdicion?: string;
   fechaModificacion?: string;
   cantidad?:number
