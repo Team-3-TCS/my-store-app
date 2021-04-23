@@ -1,16 +1,21 @@
+import { environment } from './../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Persons } from 'src/app/mock/person.mock';
 import { Persona } from '../models/persona.model';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonService {
-  persons: Persona[] = Persons;
+  persons: Persona[];
+  person: Persona;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getPersonEmail(email: string): Persona {
-    return this.persons.filter((p) => p.correo == email)[0];
+  getAllPersons() {
+    return this.http.get<Persona[]>(environment.ip + '/persona');
   }
+
 }

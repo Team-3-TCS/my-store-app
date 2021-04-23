@@ -1,3 +1,5 @@
+import { environment } from './../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Users } from 'src/app/mock/user.mock';
 import { Usuario } from '../models/usuario.models';
@@ -8,9 +10,10 @@ import { Usuario } from '../models/usuario.models';
 export class UserService {
   users: Usuario[] = Users;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getUser(id: number): Usuario {
-    return this.users.filter((u) => u.id_usuario == id)[0];
+  getAllUsers() {
+    // return this.users.filter((u) => u.id_usuario == id)[0];
+    return this.http.get<Usuario[]>(environment.ip + '/usuario');
   }
 }

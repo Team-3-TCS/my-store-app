@@ -37,12 +37,14 @@
                 type="checkbox"
                 id="{{ categoria.id_categoria }}"
                 (change)="onChange($event)"
-                value="{{ categoria.nombre }}"
+                value="{{ categoria.id_categoria }}"
               />
               <label for="{{ categoria.id_categoria }}">
                 <span></span>
                 {{ categoria.nombre }}
-                <small>(120)</small>
+                <small>
+                  {{ getCantidadesProductos(categoria.id_categoria) }}
+                </small>
               </label>
             </div>
           </div>
@@ -221,7 +223,9 @@
                 <img src="{{ products.imagen[0] }}" alt="" />
               </div>
               <div class="product-body">
-                <p class="product-category">{{ products.nombre.substring(1,50) }}</p>
+                <p class="product-category">
+                  {{ products.nombre.substring(1, 50) }}
+                </p>
                 <!-- <h3 class="product-name">
                   <a href="#">{{ products.descripcion }}</a>
                 </h3> -->

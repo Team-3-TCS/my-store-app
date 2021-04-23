@@ -1,6 +1,8 @@
+import { Rol } from './../models/rol.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { roles } from 'src/app/mock/role.mock';
-import { Rol } from '../models/rol.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +10,10 @@ import { Rol } from '../models/rol.model';
 export class RoleService {
   roles: Rol[] = roles;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getRole(role: number): Rol {
-    return this.roles.filter((r) => r.id_rol == role)[0];
+  getAllRole() {
+    // return this.roles.filter((r) => r.id_rol == role)[0];
+    return this.http.get<Rol[]>(environment.ip + '/rol');
   }
 }

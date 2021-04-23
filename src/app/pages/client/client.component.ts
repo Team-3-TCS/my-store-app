@@ -20,7 +20,7 @@ declare var $: any;
   styleUrls: ['./client.component.css'],
 })
 export class ClientComponent implements OnInit {
-  total2:number;
+  total2: number;
   total$: Observable<number>;
   total: number = 0;
   productos: Producto[] = [];
@@ -108,7 +108,7 @@ export class ClientComponent implements OnInit {
         return acc + val.precio * val.cantidad;
       }, 0);
     }
-    this.cartService.totalSubject.next(this.total2);//
+    this.cartService.totalSubject.next(this.total2); //
 
     this.toastr.success(
       'El producto ha sido añadido con exito!',
@@ -165,11 +165,10 @@ export class ClientComponent implements OnInit {
       /* arreglo1.forEach((prod:string)=> this.productos.filter(o=>categoria.toUpperCase().includes(prod)));   */
       this.productos = this.productosService.getProducts();
     } else {
-      this.arreglo1.push(m.toUpperCase());
+      this.arreglo1.push(m);
       /* console.log(this.arreglo1); */
-      console.log(m);
-      this.productos = this.productos.filter((prod) =>
-        prod.categoria.toUpperCase().includes(m.toUpperCase())
+      this.productos = this.productos.filter(
+        (prod) => prod['id_categoria'] === parseInt(m)
       );
       console.log(this.productos);
     }
@@ -184,5 +183,9 @@ export class ClientComponent implements OnInit {
         alert('Error al cargar la librería autocomplete');
       }
     });
+  }
+
+  getCantidadesProductos(id) {
+    return this.productos.filter((p) => p['id_categoria'] === id).length;
   }
 }
