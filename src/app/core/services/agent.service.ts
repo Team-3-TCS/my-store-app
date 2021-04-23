@@ -13,7 +13,7 @@ export class AgentService {
     correo: 'user@user.com',
   };
   user: Usuario = {
-    img_profile: 'assets/profile.png',
+    imagen: 'assets/profile.png',
   };
   constructor() {}
 

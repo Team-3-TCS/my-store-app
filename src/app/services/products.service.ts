@@ -1,3 +1,4 @@
+import { ProductosService } from './../core/services/productos.service';
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Producto } from '../core/models/producto.models';
@@ -7,16 +8,24 @@ import { product } from '../mock/product.mock';
   providedIn: 'root',
 })
 export class ProductsService {
-  private products: Producto[] = product;
+  private products: Producto[];
 
-  constructor() {}
+  constructor(private productosService: ProductosService) {}
 
-  getProducts() {
+  getProducts(idUser) {
+    this.products = this.productosService.getProducts();
+    this.products = this.products.filter(p=>p['id_vendedor'] === idUser)
+    console.log(this.products);
+
     return this.products;
   }
 
   getProduct(i: string) {
-    return this.products[i];
+    let producto;
+    this.productosService.getProduct(parseInt(i)).subscribe((p) => {
+      producto = p;
+    });
+    return producto;
   }
   getProductEdit(i: number) {
     i = i - 1;

@@ -18,6 +18,7 @@ export class SiderBarAgentComponent implements OnInit {
 
   ngOnInit(): void {
     this.person = this.agent[0];
+    localStorage.setItem('user', this.person.usuario.toString());
     this.user = this.agent[1];
   }
 }

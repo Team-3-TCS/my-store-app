@@ -33,7 +33,11 @@ export class ProductsAgentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.datos = this.productsService.getProducts();
+    this.datos = this.productsService.getProducts(
+      parseInt(localStorage.getItem('user'))
+    );
+    console.log(this.datos);
+
     this.dataSource = new MatTableDataSource(this.datos);
   }
 
@@ -72,6 +76,8 @@ export class ProductsAgentComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue);
+
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {

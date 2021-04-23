@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/core/models/producto.models';
+import { ProductosService } from 'src/app/core/services/productos.service';
 import { ProductsAgentComponent } from 'src/app/pages/agent/products-agent/products-agent.component';
 import { ProductsService } from 'src/app/services/products.service';
 interface Category {
@@ -27,6 +28,7 @@ export class EditProductComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
+    private productsService2: ProductosService,
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((params) => {
@@ -35,7 +37,7 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this.productsService.getProducts();
+    this.products = this.productsService2.getProducts();
     console.log(this.edit);
     console.log(this.product);
     this.selectedProduct.nombre = this.product.nombre;
