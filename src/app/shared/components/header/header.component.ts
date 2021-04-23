@@ -34,6 +34,11 @@ export class HeaderComponent implements OnInit {
     this.cartService.currentDataCart$.subscribe((data) => {
       this.valor = data.length;
     });
+    this.cartService.currentDataCart$.subscribe((data) => {
+      this.productos=data;
+    })
+    this.cartService.totalSubject.subscribe((data) => {this.total2=data})
+
   }
 
   ngOnInit(): void {
@@ -41,6 +46,7 @@ export class HeaderComponent implements OnInit {
       .pipe(debounceTime(300))
       .subscribe((valor) => this.searchEmitter.emit(valor));
     this.getData();
+    
     this.loginservice.authState$.subscribe(
       (authState) => (this.authState = authState)
     );
@@ -52,6 +58,9 @@ export class HeaderComponent implements OnInit {
     } else {
       this.cart = JSON.parse(localStorage.getItem('list'));
     }
+    this.cartService.totalSubject.subscribe((data) => {this.total2=data})
+
+    this.getDatos();
   }
   getData() {
     //Recibimos informacion del LocalStorage
@@ -66,17 +75,14 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-  getDatos() {
-    if (localStorage.getItem('list') === null) {
-      this.valor = 0;
-      let arrayList = JSON.parse(localStorage.getItem('list'));
-      this.valor = arrayList.length;
-    } else {
-      let arrayList = JSON.parse(localStorage.getItem('list'));
-      this.valor = arrayList.length;
-      //  this.cartService.addcart.next(products,this.valor);
-    }
-  }
+  getDatos() {////
+    
+    let arrayList = JSON.parse(localStorage.getItem('list'));
+    this.valor = arrayList.length;
+    let arrayList2=JSON.parse(localStorage.getItem('listaDeseos'));
+    this.total=arrayList2.length;
+    //  this.cartService.addcart.next(products,this.valor);
+}
 
   remove(product: Producto) {
     this.cartService.removeElementCart(product);
