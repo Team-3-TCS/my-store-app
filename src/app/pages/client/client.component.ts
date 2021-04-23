@@ -8,8 +8,9 @@ import { WishlistService } from 'src/app/core/services/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 
 import { ThrowStmt } from '@angular/compiler';
-import { categoria } from 'src/app/core/models/categoria.models';
+import { Categoria } from 'src/app/core/models/categoria.models';
 import { categories } from 'src/app/mock/category.mock';
+import { CategoriaService } from 'src/app/core/services/categoria.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -29,7 +30,7 @@ export class ClientComponent implements OnInit {
   flag = false;
   categoria_valor: number;
   presionado: boolean;
-  categorias: categoria[] = categories;
+  categorias: Categoria[];
   productoSel: any[];
   arreglo1: any[];
   categoria: any[];
@@ -37,6 +38,7 @@ export class ClientComponent implements OnInit {
   constructor(
     public productosService: ProductosService,
     public cartService: CartService,
+    public categoriaService: CategoriaService,
     public wishlistService: WishlistService,
     private toastr: ToastrService,
     private elRef: ElementRef
@@ -65,6 +67,7 @@ export class ClientComponent implements OnInit {
       }
     });
     this.getScript();
+    this.getCategories();
     this.obtenerProductos();
     this.getDatos();
     this.cartNumberFunc();
@@ -75,6 +78,12 @@ export class ClientComponent implements OnInit {
     } else {
       this.cart = JSON.parse(localStorage.getItem('list'));
     }
+  }
+
+  getCategories() {
+    this.categoriaService.getAllCategories().subscribe((categories) => {
+      this.categorias = categories;
+    });
   }
 
   obtenerProductos() {
@@ -142,26 +151,6 @@ export class ClientComponent implements OnInit {
   onChange(valor) {
     let categoria = [];
     let i;
-
-    /*  this.presionado=valor.target.checked;
-     if(!this.presionado){
-       this.categoria_valor=0;
-     }
-     else{
-      this.categoria_valor=valor.target.value;
-      console.log(this.categoria_valor);
-     } */
-
-    /*    if(!arreglo1){
-       this.productos=this.productosService.getProducts();
-
-     }
-     if(arreglo1.includes(categoria)){
-       arreglo1.splice(arreglo1.indexOf(categoria),1);
-       
-        arreglo2= this.productos.filter(prod=>prod.categoria.toUpperCase().includes(arreglo1));  
-      arreglo1.forEach((prod:string)=> this.productos.filter(o=>categoria.toUpperCase().includes(prod)));                                 
-     } */
     let ga = 'Lavadora LG';
     let m = valor.target.value;
 
@@ -183,25 +172,6 @@ export class ClientComponent implements OnInit {
         prod.categoria.toUpperCase().includes(m.toUpperCase())
       );
       console.log(this.productos);
-      /* this.arreglo2.push(...this.productos.filter(prod=>prod.categoria.toUpperCase().includes(m.toUpperCase())))
-             console.log(this.arreglo2);  */
-      /*  this.productos=this.arreglo1; */
-
-      /* this.productos=this.arreglo1 */
-      /* this.arreglo1.forEach((prod:string)=> categoria.push(prod));
-                  console.log(categoria);  */
-      /* this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase()))
-                 console.log(this.productos) */
-      /* this.arreglo1.forEach((prod:string)=>categoria.push(...this.productos.filter(o=>o.nombre.toUpperCase().includes(prod.toUpperCase()))));
-                       this.productos=categoria; */
-
-      /*   this.arreglo1.forEach((prod:string)=>this.productos=this.productos.filter(o=>o.nombre.toUpperCase().includes(prod.toUpperCase()))); */
-
-      /*       this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase())); */
-      /* for (let i in this.arreglo1) {
-                     this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(this.arreglo1[i].toUpperCase()))
-                     console.log(this.productos)
-                } */
     }
   }
 

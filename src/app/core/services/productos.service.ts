@@ -26,12 +26,6 @@ export class ProductosService {
     return this.datos;
   }
   getProduct(id: number) {
-    let producto;
-    this.datos.forEach((prod) => {
-      if (prod.id == id) {
-        producto = prod;
-      }
-    });
-    return producto;
+    return this.http.get<Producto>(environment.ip + '/producto/' + id);
   }
 }

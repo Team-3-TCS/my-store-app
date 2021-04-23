@@ -1,22 +1,20 @@
-import { categoria } from "../core/models/categoria.models";
+import { Categoria } from '../core/models/categoria.models';
 
-export const categories:categoria[]=[
-    
-   {
-        idCategoria: 1,
-        nombre:'LAPTOPS'       
-    },
-    {
-        idCategoria: 2,
-        nombre:'SMARTPHONES'
-    },
-    {
-        idCategoria: 3,
-        nombre: 'CAMERAS'
-    },
-    {
-        idCategoria: 4,
-        nombre:'ACCESSORIES'
-    }
-
+export const categories: Categoria[] = [
+  {
+    id_categoria: 1,
+    nombre: 'LAPTOPS',
+  },
+  {
+    id_categoria: 2,
+    nombre: 'SMARTPHONES',
+  },
+  {
+    id_categoria: 3,
+    nombre: 'CAMERAS',
+  },
+  {
+    id_categoria: 4,
+    nombre: 'ACCESSORIES',
+  },
 ];

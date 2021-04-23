@@ -29,8 +29,16 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.prod = this.productosService.getProduct(this.id);
-    console.log(this.prod);
+    this.getProduct();
+  }
+
+  getProduct() {
+    this.productosService.getProduct(this.id).subscribe((producto) => {
+      let imagenes = producto.imagen.toString();
+      this.prod = producto;
+      producto.imagen = imagenes.split(',');
+      console.log(this.prod);
+    });
   }
   ngAfterViewInit(): void {
     this.getScript();
