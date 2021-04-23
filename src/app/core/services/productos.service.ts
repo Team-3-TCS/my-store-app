@@ -20,6 +20,7 @@ export class ProductosService {
         console.log(imagenes.split(','));
         this.datos[index].imagen = imagenes.split(',');
         this.datos[index].id = producto['id_producto'];
+        this.datos[index].cantidad=1;
       });
       console.log(a);
     });

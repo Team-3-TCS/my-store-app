@@ -15,7 +15,7 @@ declare var jQuery: any;
 declare var $: any;
 @Component({
   selector: 'app-clientes',
-  templateUrl: './client.component.html',
+  templateUrl:'./client.component.html',
   styleUrls: ['./client.component.css'],
 })
 export class ClientComponent implements OnInit {
@@ -129,71 +129,28 @@ export class ClientComponent implements OnInit {
   }
   handleSearch(value: string) {
     this.filtro_valor = value;
-    console.log(this.filtro_valor);
+    
   }
   onChange(valor) {
-    let categoria = [];
-    let i;
-
-    /*  this.presionado=valor.target.checked;
-     if(!this.presionado){
-       this.categoria_valor=0;
-     }
-     else{
-      this.categoria_valor=valor.target.value;
-      console.log(this.categoria_valor);
-     } */
-
-    /*    if(!arreglo1){
-       this.productos=this.productosService.getProducts();
-
-     }
-     if(arreglo1.includes(categoria)){
-       arreglo1.splice(arreglo1.indexOf(categoria),1);
-       
-        arreglo2= this.productos.filter(prod=>prod.categoria.toUpperCase().includes(arreglo1));  
-      arreglo1.forEach((prod:string)=> this.productos.filter(o=>categoria.toUpperCase().includes(prod)));                                 
-     } */
-    let ga = 'Lavadora LG';
+  
     let m = valor.target.value;
 
     if (!this.arreglo1) {
-      /* this.productos=this.productosService.getProducts(); */
       this.arreglo1 = [];
     }
     if (this.arreglo1.includes(m)) {
       this.arreglo1.splice(this.arreglo1.indexOf(m), 1);
       console.log(this.arreglo1);
-      /* = this.productos.filter(prod=>prod.categoria.toUpperCase().includes(arreglo1));   */
-      /* arreglo1.forEach((prod:string)=> this.productos.filter(o=>categoria.toUpperCase().includes(prod)));   */
+     
       this.productos = this.productosService.getProducts();
     } else {
       this.arreglo1.push(m.toUpperCase());
-      /* console.log(this.arreglo1); */
+      
       console.log(m);
       this.productos = this.productos.filter((prod) =>
         prod.categoria.toUpperCase().includes(m.toUpperCase())
       );
       console.log(this.productos);
-      /* this.arreglo2.push(...this.productos.filter(prod=>prod.categoria.toUpperCase().includes(m.toUpperCase())))
-             console.log(this.arreglo2);  */
-      /*  this.productos=this.arreglo1; */
-
-      /* this.productos=this.arreglo1 */
-      /* this.arreglo1.forEach((prod:string)=> categoria.push(prod));
-                  console.log(categoria);  */
-      /* this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase()))
-                 console.log(this.productos) */
-      /* this.arreglo1.forEach((prod:string)=>categoria.push(...this.productos.filter(o=>o.nombre.toUpperCase().includes(prod.toUpperCase()))));
-                       this.productos=categoria; */
-
-      /*   this.arreglo1.forEach((prod:string)=>this.productos=this.productos.filter(o=>o.nombre.toUpperCase().includes(prod.toUpperCase()))); */
-
-      /*       this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(m.toUpperCase())); */
-      /* for (let i in this.arreglo1) {
-                     this.productos=this.productos.filter(prod=>prod.nombre.toUpperCase().includes(this.arreglo1[i].toUpperCase()))
-                     console.log(this.productos)
-                } */
     }
   }
 

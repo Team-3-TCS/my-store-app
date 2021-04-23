@@ -12,7 +12,7 @@ export const Users: Usuario[] = [
   {
     id_usuario: 2,
     id_rol: 2,
-    nombre_usuario: 'Paul',//'pmerill1'
+    nombre_usuario: 's1mple',//'pmerill1'
     contrasenia: '3KvX4MBleq',
     id_estado_actividad: 1,
     img_profile: 'asset/profile.png',
