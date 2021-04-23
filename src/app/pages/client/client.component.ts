@@ -11,6 +11,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Categoria } from 'src/app/core/models/categoria.models';
 import { categories } from 'src/app/mock/category.mock';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
+import { Detalle_Compra } from 'src/app/core/models/detalle_compra.models';
 
 declare var jQuery: any;
 declare var $: any;
@@ -100,8 +101,8 @@ export class ClientComponent implements OnInit {
       //  this.cartService.addcart.next(products,this.valor);
     }
   }
-  addCar(products: Producto) {
-    this.cartService.changeCart(products);
+  addCar(detalle_compra: Detalle_Compra) {
+    this.cartService.changeCart(detalle_compra);
     if (localStorage.getItem('list')) {
       let getCartDetails = JSON.parse(localStorage.getItem('list'));
       this.total2 = getCartDetails.reduce(function (acc, val) {

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { Detalle_Compra } from 'src/app/core/models/detalle_compra.models';
 import { Producto } from 'src/app/core/models/producto.models';
 import { CartService } from 'src/app/core/services/cart.service';
 import { LoginService } from 'src/app/core/services/login.service';
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   valor: number = 0;
   total: number = 0;
   total2: number = 0;
-  productos: Producto[] = [];
+  detalle_compra: Detalle_Compra[] = [];
   search = new FormControl('');
   @Output('search') searchEmitter = new EventEmitter<string>();
   cart: Producto[] = [];
@@ -35,10 +36,11 @@ export class HeaderComponent implements OnInit {
       this.valor = data.length;
     });
     this.cartService.currentDataCart$.subscribe((data) => {
-      this.productos=data;
-    })
-    this.cartService.totalSubject.subscribe((data) => {this.total2=data})
-
+      this.detalle_compra = data;
+    });
+    this.cartService.totalSubject.subscribe((data) => {
+      this.total2 = data;
+    });
   }
 
   ngOnInit(): void {
@@ -46,19 +48,24 @@ export class HeaderComponent implements OnInit {
       .pipe(debounceTime(300))
       .subscribe((valor) => this.searchEmitter.emit(valor));
     this.getData();
-    
+
     this.loginservice.authState$.subscribe(
       (authState) => (this.authState = authState)
     );
-    this.loginservice.userData$.subscribe(
-      (userData) => (this.myUser = userData)
-    );
+    this.loginservice.userData$.subscribe((userData) => {
+      console.log(userData);
+
+      localStorage.setItem('client', userData['id_usuario']);
+      this.myUser = userData;
+    });
     if (localStorage.getItem('list') === null) {
       this.cart = JSON.parse(localStorage.getItem('list'));
     } else {
       this.cart = JSON.parse(localStorage.getItem('list'));
     }
-    this.cartService.totalSubject.subscribe((data) => {this.total2=data})
+    this.cartService.totalSubject.subscribe((data) => {
+      this.total2 = data;
+    });
 
     this.getDatos();
   }
@@ -66,7 +73,7 @@ export class HeaderComponent implements OnInit {
     //Recibimos informacion del LocalStorage
     let getCartDetails;
     if (localStorage.getItem('list')) {
-      this.productos = JSON.parse(localStorage.getItem('list'));
+      this.detalle_compra = JSON.parse(localStorage.getItem('list'));
       if (localStorage.getItem('list')) {
         getCartDetails = JSON.parse(localStorage.getItem('list'));
         this.total2 = getCartDetails.reduce(function (acc, val) {
@@ -75,14 +82,15 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-  getDatos() {////
-    
+  getDatos() {
+    ////
+
     let arrayList = JSON.parse(localStorage.getItem('list'));
     this.valor = arrayList.length;
-    let arrayList2=JSON.parse(localStorage.getItem('listaDeseos'));
-    this.total=arrayList2.length;
+    let arrayList2 = JSON.parse(localStorage.getItem('listaDeseos'));
+    this.total = arrayList2.length;
     //  this.cartService.addcart.next(products,this.valor);
-}
+  }
 
   remove(product: Producto) {
     this.cartService.removeElementCart(product);

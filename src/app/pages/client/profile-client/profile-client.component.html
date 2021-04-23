@@ -1,13 +1,21 @@
 <app-header></app-header>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  rel="stylesheet"
+/>
 <div class="container bootstrap snippets bootdeys">
   <div class="row" id="user-profile">
     <div class="col-lg-3 col-md-4 col-sm-4">
       <div class="main-box clearfix">
-        <h2>Paul Mejia Cuellar </h2>
+        <h2>
+          {{ person?.nombre }}
+          {{ person?.apellido_paterno + " " + person?.apellido_materno }}
+        </h2>
         <img
-          src="https://www.deportetotal.xyz/wp-content/uploads/2018/07/30698481_1669324443122083_4239168270537765240_n.jpg"
-          alt="" class="profile-img img-responsive center-block">
+          src="{{ user?.imagen }}"
+          alt=""
+          class="profile-img img-responsive center-block"
+        />
         <div class="profile-label">
           <span class="label label-danger">Cliente</span>
         </div>
@@ -18,9 +26,7 @@
           <i class="fa fa-star"></i>
           <i class="fa fa-star-o"></i>
         </div>
-        <div class="profile-since">
-          Miembro desde: Diciembre 2020
-        </div>
+        <div class="profile-since">Miembro desde: Diciembre 2020</div>
         <div class="profile-details">
           <ul class="fa-ul">
             <li><i class="fa-li fa fa-truck"></i>compras: <span>3</span></li>
@@ -40,48 +46,37 @@
         <div class="row profile-user-info">
           <div class="col-sm-8">
             <div class="profile-user-details clearfix">
-              <div class="profile-user-details-label">
-                Nombres:
-              </div>
+              <div class="profile-user-details-label">Nombres:</div>
               <div class="profile-user-details-value">
-                Smash
+                {{ person?.nombre }}
               </div>
             </div>
             <div class="profile-user-details clearfix">
-              <div class="profile-user-details-label">
-                Apellidos:
-              </div>
+              <div class="profile-user-details-label">Apellidos:</div>
               <div class="profile-user-details-value">
-                Sama
+                {{ person?.apellido_paterno + " " + person?.apellido_materno }}
               </div>
             </div>
             <div class="profile-user-details clearfix">
-              <div class="profile-user-details-label">
-                Email:
-              </div>
-              <div class="profile-user-details-value">
-                smash@gmail.com
-              </div>
+              <div class="profile-user-details-label">Email:</div>
+              <div class="profile-user-details-value">{{ person?.correo }}</div>
             </div>
             <div class="profile-user-details clearfix">
-              <div class="profile-user-details-label">
-                Celular/Telefono:
-              </div>
-              <div class="profile-user-details-value">
-                +51 994871020
-              </div>
+              <div class="profile-user-details-label">Celular/Telefono:</div>
+              <div class="profile-user-details-value">+51 994871020</div>
             </div>
           </div>
         </div>
         <div class="tabs-wrapper profile-tabs">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-activity" data-toggle="tab">Compras</a></li>
+            <li class="active">
+              <a href="#tab-activity" data-toggle="tab">Compras</a>
+            </li>
             <li><a href="#tab-friends" data-toggle="tab">Historial</a></li>
             <li><a href="#tab-chat" data-toggle="tab">Mensajeria</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade in active" id="tab-activity">
-
               <div class="table-responsive">
                 <table class="table">
                   <tbody>
@@ -90,46 +85,51 @@
                         <i class="fa fa-truck"></i>
                       </td>
                       <td>
-                        Play Station 5 cambio de estado  de<span class="label label-primary">Pendiente</span> a
+                        Play Station 5 cambio de estado de<span
+                          class="label label-primary"
+                          >Pendiente</span
+                        >
+                        a
                         <span class="label label-success">Completado</span>
                       </td>
-                      <td>
-                        2021/03/08 11:28 AM
-                      </td>
+                      <td>2021/03/08 11:28 AM</td>
                     </tr>
                     <tr>
                       <td class="text-center">
                         <i class="fa fa-truck"></i>
                       </td>
                       <td>
-                        Lavadora Samsung se encuentra en estado <span class="label label-primary">Pendiente</span>
+                        Lavadora Samsung se encuentra en estado
+                        <span class="label label-primary">Pendiente</span>
                       </td>
-                      <td>
-                        2021/01/02 11:02 PM
-                      </td>
+                      <td>2021/01/02 11:02 PM</td>
                     </tr>
                     <tr>
                       <td class="text-center">
                         <i class="fa fa-truck"></i>
                       </td>
                       <td>
-                        Disco bachata se encuentra en estado<span class="label label-success">Completado</span>
+                        Disco bachata se encuentra en estado<span
+                          class="label label-success"
+                          >Completado</span
+                        >
                       </td>
-                      <td>
-                        2020/12/25 02:08 AM
-                      </td>
+                      <td>2020/12/25 02:08 AM</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-
             </div>
 
             <div class="tab-pane fade" id="tab-friends">
               <ul class="widget-users row">
-                  <li class="col-md-6">
+                <li class="col-md-6">
                   <div class="img">
-                    <img src="https://us.123rf.com/450wm/aleutie/aleutie1712/aleutie171200022/91829871-giovani-coppie-latine-che-ballano-kizomba-salsa-o-bachata-su-un-disco-paesaggio-tropicale-sullo-sfon.jpg?ver=6" class="img-responsive" alt="">
+                    <img
+                      src="https://us.123rf.com/450wm/aleutie/aleutie1712/aleutie171200022/91829871-giovani-coppie-latine-che-ballano-kizomba-salsa-o-bachata-su-un-disco-paesaggio-tropicale-sullo-sfon.jpg?ver=6"
+                      class="img-responsive"
+                      alt=""
+                    />
                   </div>
                   <div class="details">
                     <div class="name">
@@ -145,7 +145,11 @@
                 </li>
                 <li class="col-md-6">
                   <div class="img">
-                    <img src="https://images.samsung.com/is/image/samsung/pe-flexwash-wr25m9960kv-pe-frontdooropenblack-77737173?$720_576_PNG$" class="img-responsive" alt="">
+                    <img
+                      src="https://images.samsung.com/is/image/samsung/pe-flexwash-wr25m9960kv-pe-frontdooropenblack-77737173?$720_576_PNG$"
+                      class="img-responsive"
+                      alt=""
+                    />
                   </div>
                   <div class="details">
                     <div class="name">
@@ -161,7 +165,11 @@
                 </li>
                 <li class="col-md-6">
                   <div class="img">
-                    <img src="data:image/jpeg;base64,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" class="img-responsive" alt="">
+                    <img
+                      src="data:image/jpeg;base64,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"
+                      class="img-responsive"
+                      alt=""
+                    />
                   </div>
                   <div class="details">
                     <div class="name">
@@ -175,26 +183,42 @@
                     </div>
                   </div>
                 </li>
-              
               </ul>
-              <br>
+              <br />
               <a href="#" class="btn btn-success pull-right">Ver todo</a>
             </div>
             <div class="tab-pane fade" id="tab-chat">
               <div class="conversation-wrapper">
                 <div class="conversation-content">
-                  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 340px;">
-                    <div class="conversation-inner" style="overflow: hidden; width: auto; height: 340px;">
-
+                  <div
+                    class="slimScrollDiv"
+                    style="
+                      position: relative;
+                      overflow: hidden;
+                      width: auto;
+                      height: 340px;
+                    "
+                  >
+                    <div
+                      class="conversation-inner"
+                      style="overflow: hidden; width: auto; height: 340px"
+                    >
                       <div class="conversation-item item-left clearfix">
                         <div class="conversation-user">
                           <img
-                            src="https://www.deportetotal.xyz/wp-content/uploads/2018/07/30698481_1669324443122083_4239168270537765240_n.jpg"
-                            class="img-responsive" alt="">
+                            src="{{ user?.imagen }}"
+                            class="img-responsive"
+                            alt=""
+                          />
                         </div>
                         <div class="conversation-body">
                           <div class="name">
-                            Paul Mejia Cuellar
+                            {{ person?.nombre }}
+                            {{
+                              person?.apellido_paterno +
+                                " " +
+                                person?.apellido_materno
+                            }}
                           </div>
                           <div class="time hidden-xs">
                             Diciembre, 2020 6:28 PM
@@ -206,65 +230,75 @@
                       </div>
                       <div class="conversation-item item-right clearfix">
                         <div class="conversation-user">
-                          <img src="https://tentulogo.com/wp-content/uploads/2018/06/samsung-logo.jpg"
-                            class="img-responsive" alt="">
+                          <img
+                            src="https://tentulogo.com/wp-content/uploads/2018/06/samsung-logo.jpg"
+                            class="img-responsive"
+                            alt=""
+                          />
                         </div>
                         <div class="conversation-body">
-                          <div class="name">
-                            Samsung Perú
-                          </div>
+                          <div class="name">Samsung Perú</div>
                           <div class="time hidden-xs">
                             Diciembre 30, 2020 8:31 PM
                           </div>
                           <div class="text">
-                            Buenos día Sr.Paul habra una demora de 2 días por motivos de cierre de carretera.
+                            Buenos día Sr.{{ person?.nombre }} habra una demora
+                            de 2 días por motivos de cierre de carretera.
                           </div>
                         </div>
                       </div>
                       <div class="conversation-item item-right clearfix">
                         <div class="conversation-user">
-                          <img src="https://tentulogo.com/wp-content/uploads/2018/06/samsung-logo.jpg"
-                            class="img-responsive" alt="">
+                          <img
+                            src="https://tentulogo.com/wp-content/uploads/2018/06/samsung-logo.jpg"
+                            class="img-responsive"
+                            alt=""
+                          />
                         </div>
                         <div class="conversation-body">
-                          <div class="name">
-                            Samsung Perú
-                          </div>
+                          <div class="name">Samsung Perú</div>
                           <div class="time hidden-xs">
                             Enero 01, 2020 08:31 AM
                           </div>
                           <div class="text">
-                            Buenas tardes hoy en la tarde estara su pedido en su casa.
+                            Buenas tardes hoy en la tarde estara su pedido en su
+                            casa.
                           </div>
                         </div>
                       </div>
                       <div class="conversation-item item-left clearfix">
                         <div class="conversation-user">
                           <img
-                            src="https://www.deportetotal.xyz/wp-content/uploads/2018/07/30698481_1669324443122083_4239168270537765240_n.jpg"
-                            class="img-responsive" alt="">
+                            src="{{ user?.imagen }}"
+                            class="img-responsive"
+                            alt=""
+                          />
                         </div>
                         <div class="conversation-body">
                           <div class="name">
-                            Paul Mejia Cuellar
+                            {{ person?.nombre }}
+                            {{
+                              person?.apellido_paterno +
+                                " " +
+                                person?.apellido_materno
+                            }}
                           </div>
                           <div class="time hidden-xs">
                             Enero 01, 2021 03:09 PM
                           </div>
-                          <div class="text">
-                            Me dieron el color equivocado
-                          </div>
+                          <div class="text">Me dieron el color equivocado</div>
                         </div>
                       </div>
                       <div class="conversation-item item-right clearfix">
                         <div class="conversation-user">
-                          <img src="https://tentulogo.com/wp-content/uploads/2018/06/samsung-logo.jpg"
-                            class="img-responsive" alt="">
+                          <img
+                            src="https://tentulogo.com/wp-content/uploads/2018/06/samsung-logo.jpg"
+                            class="img-responsive"
+                            alt=""
+                          />
                         </div>
                         <div class="conversation-body">
-                          <div class="name">
-                            Samsun Perú
-                          </div>
+                          <div class="name">Samsun Perú</div>
                           <div class="time hidden-xs">
                             Enero 01, 2021 05:05 PM
                           </div>
@@ -273,24 +307,52 @@
                           </div>
                         </div>
                       </div>
-
                     </div>
-                    <div class="slimScrollBar"
-                      style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);">
-                    </div>
-                    <div class="slimScrollRail"
-                      style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);">
-                    </div>
+                    <div
+                      class="slimScrollBar"
+                      style="
+                        width: 7px;
+                        position: absolute;
+                        top: 0px;
+                        opacity: 0.4;
+                        display: block;
+                        border-radius: 7px;
+                        z-index: 99;
+                        right: 1px;
+                        background: rgb(0, 0, 0);
+                      "
+                    ></div>
+                    <div
+                      class="slimScrollRail"
+                      style="
+                        width: 7px;
+                        height: 100%;
+                        position: absolute;
+                        top: 0px;
+                        display: none;
+                        border-radius: 7px;
+                        opacity: 0.2;
+                        z-index: 90;
+                        right: 1px;
+                        background: rgb(51, 51, 51);
+                      "
+                    ></div>
                   </div>
                 </div>
                 <div class="conversation-new-message">
                   <form>
                     <div class="form-group">
-                      <textarea class="form-control" rows="2" placeholder="Enter your message..."></textarea>
+                      <textarea
+                        class="form-control"
+                        rows="2"
+                        placeholder="Enter your message..."
+                      ></textarea>
                     </div>
 
                     <div class="clearfix">
-                      <button type="submit" class="btn btn-success pull-right">Enviar mensaje</button>
+                      <button type="submit" class="btn btn-success pull-right">
+                        Enviar mensaje
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -298,7 +360,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
