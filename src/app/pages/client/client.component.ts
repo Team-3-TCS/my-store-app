@@ -20,6 +20,7 @@ declare var $: any;
   styleUrls: ['./client.component.css'],
 })
 export class ClientComponent implements OnInit {
+  total2:number;
   total$: Observable<number>;
   total: number = 0;
   productos: Producto[] = [];
@@ -101,6 +102,13 @@ export class ClientComponent implements OnInit {
   }
   addCar(products: Producto) {
     this.cartService.changeCart(products);
+    if (localStorage.getItem('list')) {
+      let getCartDetails = JSON.parse(localStorage.getItem('list'));
+      this.total2 = getCartDetails.reduce(function (acc, val) {
+        return acc + val.precio * val.cantidad;
+      }, 0);
+    }
+    this.cartService.totalSubject.next(this.total2);//
 
     this.toastr.success(
       'El producto ha sido añadido con exito!',

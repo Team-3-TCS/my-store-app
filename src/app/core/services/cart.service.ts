@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs'
+import {BehaviorSubject, Subject} from 'rxjs'
 
 import { Producto } from '../models/producto.models';
 
@@ -22,7 +22,7 @@ export class CartService {
       //Si ya cargamos uno aumentamos su cantidad
       if(objIndex != -1)
       {
-        listCart[objIndex].stock += 1;
+        listCart[objIndex].cantidad += 1;
       }
       //Si es el primer item de ese tipo lo agregamos derecho al carrito
       else {
@@ -46,7 +46,7 @@ export class CartService {
     if(objIndex != -1)
     {
       //Seteamos la cantidad en 1 (ya que los array se modifican los valores por referencia, si vovlemos a agregarlo la cantidad no se reiniciará)
-      listCart[objIndex].stock = 1;
+      listCart[objIndex].cantidad = 1;
       //Eliminamos el item del array del carrito
       listCart.splice(objIndex,1);
       
@@ -73,4 +73,6 @@ export class CartService {
     }
 
   }
+  totalSubject = new Subject<any>();
+  valor = new Subject<any>();
 }
