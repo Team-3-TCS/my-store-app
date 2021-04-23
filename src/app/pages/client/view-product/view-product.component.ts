@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Detalle_Compra } from 'src/app/core/models/detalle_compra.models';
 import { Producto } from 'src/app/core/models/producto.models';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductosService } from 'src/app/core/services/productos.service';
@@ -82,8 +83,10 @@ export class ViewProductComponent implements AfterViewInit, OnInit {
       $('#product-main-img .product-preview').zoom();
     }
   }
-  addCart(producto: Producto) {
-    this.cartService.changeCart(producto);
+  addCart(detalle_compra: Detalle_Compra) {
+    console.log(detalle_compra);
+
+    this.cartService.changeCart(detalle_compra);
     this.toastr.success(
       'El producto ha sido añadido con exito!',
       'Añadido al Carrito',

@@ -5,6 +5,7 @@ import { Persona } from '../models/persona.model';
 import { Rol } from '../models/rol.model';
 import { Usuario } from '../models/usuario.models';
 import { AgentService } from './agent.service';
+import { ClientService } from './client.service';
 import { PersonService } from './person.service';
 import { RoleService } from './role.service';
 import { UserService } from './user.service';
@@ -24,7 +25,8 @@ export class LoginService {
     private userService: UserService,
     private roleService: RoleService,
     public router: Router,
-    private agentService: AgentService
+    private agentService: AgentService,
+    private clientService: ClientService
   ) {}
 
   login(email: string, password: string) {
@@ -56,6 +58,7 @@ export class LoginService {
                   this.router.navigateByUrl('/clients');
                   this.authState$.next(this.auth);
                   this.userData$.next(this.user);
+                  this.clientService.setClient(this.person, this.user);
                   break;
                 case 'VENDEDOR':
                   this.auth = true;
