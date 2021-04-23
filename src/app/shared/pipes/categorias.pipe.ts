@@ -8,7 +8,7 @@ export class CategoriasPipe implements PipeTransform {
   transform(lista:any[] , num:number): any[] {
     
     if(!num) return lista;
-    return lista.filter(prod => prod.idCategoria.includes(num));
+    return lista.filter(prod => prod.id_categoria.includes(num));
     
   }
 

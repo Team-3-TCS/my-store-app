@@ -3,7 +3,7 @@ import { Producto } from '../core/models/producto.models';
 export const product: Producto[] = [
   {
     id: 1,
-    idCategoria: 1,
+    id_categoria: 1,
     categoria: 'LAPTOPS',
     nombre:
       'Gamer Nitro 5 AN515-55-576K 15.6" FHD Core i5 10300H 8GB 256GB + 2TB 4GB NVIDIA GTX 1650 Wifi 6',
@@ -21,7 +21,7 @@ export const product: Producto[] = [
   },
   {
     id: 2,
-    idCategoria: 1,
+    id_categoria: 1,
     nombre:
       'Laptop TUF 15.6" FX505DT Ryzen 7 3750H 512GB SSD 8GB RAM - Pantalla FHD - 4GB Video Nvidia GTX1650',
     categoria: 'LAPTOPS',
@@ -39,7 +39,7 @@ export const product: Producto[] = [
   },
   {
     id: 3,
-    idCategoria: 6,
+    id_categoria: 6,
     categoria: 'LAPTOPS',
     nombre:
       'Laptop Zenbook Duo 14" UX482 Core i7 11va Gen 1TB SSD 16GB RAM - Pantalla FHD - 2GB Video',
@@ -57,7 +57,7 @@ export const product: Producto[] = [
   },
   {
     id: 4,
-    idCategoria: 2,
+    id_categoria: 2,
     categoria: 'LAPTOPS',
     nombre: 'Laptop Gamer GF63 THIN 10SCXR',
     descripcion: 'MSI LAPTOP',
@@ -74,7 +74,7 @@ export const product: Producto[] = [
   },
   {
     id: 5,
-    idCategoria: 3,
+    id_categoria: 3,
     categoria: 'Smartphones',
     nombre: 'Xiaomi Mi 11 Lite Peach Pink 128GB',
     descripcion: 'XIAOMI',
@@ -91,7 +91,7 @@ export const product: Producto[] = [
   },
   {
     id: 6,
-    idCategoria: 4,
+    id_categoria: 4,
     categoria: 'Smartphones',
     nombre: 'Galaxy Note20 Ultra',
     descripcion: 'Samsung Galaxy',
@@ -106,7 +106,7 @@ export const product: Producto[] = [
   },
   {
     id: 7,
-    idCategoria: 5,
+    id_categoria: 5,
     categoria: 'ACCESORIOS',
     nombre: 'Lavadora LG ',
     descripcion: 'Lavadora 18 Kg Blanca WWI18BBBLA',
@@ -117,7 +117,7 @@ export const product: Producto[] = [
   },
   {
     id: 8,
-    idCategoria: 6,
+    id_categoria: 6,
     categoria: 'LAPTOPS',
     nombre:
       'Laptop Zenbook Duo 14" UX482 Core i7 11va Gen 1TB SSD 16GB RAM - Pantalla FHD - 2GB Video',
@@ -135,7 +135,7 @@ export const product: Producto[] = [
   },
   {
     id: 9,
-    idCategoria: 1,
+    id_categoria: 1,
     nombre:
       'Laptop TUF 15.6" FX505DT Ryzen 7 3750H 512GB SSD 8GB RAM - Pantalla FHD - 4GB Video Nvidia GTX1650',
     categoria: 'LAPTOPS',
@@ -153,7 +153,7 @@ export const product: Producto[] = [
   },
   {
     id: 10,
-    idCategoria: 8,
+    id_categoria: 8,
     categoria: 'Smartphones',
     nombre: 'Galaxy S21 ULTRA PLATA',
     descripcion: 'SAMSUNG',
@@ -168,7 +168,7 @@ export const product: Producto[] = [
   },
   {
     id: 11,
-    idCategoria: 9,
+    id_categoria: 9,
     categoria: 'ACCESSORIES',
     nombre: 'Reloj Hombre',
     descripcion: 'Guess W1264g3',
@@ -181,7 +181,7 @@ export const product: Producto[] = [
   },
   {
     id: 12,
-    idCategoria: 10,
+    id_categoria: 10,
     categoria: 'Smartphones',
     nombre: 'XIAOMI',
     descripcion: 'XIAOMI REDMI 9 US 64 GB GRIS CARBON',
@@ -195,7 +195,7 @@ export const product: Producto[] = [
   },
   {
     id: 13,
-    idCategoria: 10,
+    id_categoria: 10,
     categoria: 'Smartphones',
     nombre: 'Note 8 Azul',
     descripcion: 'XIAOMI ',
@@ -209,7 +209,7 @@ export const product: Producto[] = [
   },
   {
     id: 14,
-    idCategoria: 10,
+    id_categoria: 10,
     categoria: 'Smartphones',
     nombre: 'IPHONE',
     descripcion: 'IPHONE SE 64GB BLACK',
@@ -222,7 +222,7 @@ export const product: Producto[] = [
   },
   {
     id: 15,
-    idCategoria: 10,
+    id_categoria: 10,
     categoria: 'Smartphones',
     nombre: 'SAMSUNG',
     descripcion: 'GALAXY A71 BLACK',
@@ -235,7 +235,7 @@ export const product: Producto[] = [
   },
   {
     id: 16,
-    idCategoria: 10,
+    id_categoria: 10,
     categoria: 'Smartphones',
     nombre: 'HUAWEI',
     descripcion: 'P40 LITE NEGRO',
@@ -248,7 +248,7 @@ export const product: Producto[] = [
   },
   {
     id: 22,
-    idCategoria: 1,
+    id_categoria: 1,
     categoria: 'LAPTOPS',
     nombre: 'Laptop Core i3 4Gb 1Tb 14" sin Sistema',
     descripcion: '',

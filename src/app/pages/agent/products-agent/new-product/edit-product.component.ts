@@ -54,7 +54,7 @@ export class EditProductComponent implements OnInit {
   addOrEditProduct() {
     if (!this.edit) {
       this.selectedProduct.id = this.products.length + 1;
-      this.selectedProduct.idCategoria = 11;
+      this.selectedProduct.id_categoria = 11;
       this.productsService.addProduct(this.selectedProduct);
       this.selectedProduct = {
         nombre: null,
