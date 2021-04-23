@@ -1,3 +1,4 @@
+import { ProductosService } from './../../../../core/services/productos.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/core/models/producto.models';
@@ -22,6 +23,7 @@ export class NewProductComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
+    private productsService2: ProductosService,
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((params) => {
@@ -30,7 +32,7 @@ export class NewProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this.productsService.getProducts();
+    this.products = this.productsService2.getProducts();
   }
 
   categories: Category[] = [

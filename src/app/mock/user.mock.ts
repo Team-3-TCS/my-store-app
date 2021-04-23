@@ -7,7 +7,7 @@ export const Users: Usuario[] = [
     nombre_usuario: 'mmartinon0',
     contrasenia: 'x7F9Vp9Zp9',
     id_estado_actividad: 1,
-    img_profile: 'asset/profile.png',
+    imagen: 'asset/profile.png',
   },
   {
     id_usuario: 2,
@@ -15,7 +15,7 @@ export const Users: Usuario[] = [
     nombre_usuario: 'Paul',//'pmerill1'
     contrasenia: '3KvX4MBleq',
     id_estado_actividad: 1,
-    img_profile: 'asset/profile.png',
+    imagen: 'asset/profile.png',
   },
   {
     id_usuario: 3,
@@ -23,6 +23,6 @@ export const Users: Usuario[] = [
     nombre_usuario: 'malen2',
     contrasenia: '8yWIcaO',
     id_estado_actividad: 1,
-    img_profile: 'assets/profile.png',
+    imagen: 'assets/profile.png',
   },
 ];
